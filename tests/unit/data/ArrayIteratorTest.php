@@ -9,7 +9,7 @@ use yii2lab\test\helpers\DataHelper;
 class ArrayIteratorTest extends Unit
 {
 	
-	const PACKAGE = 'yii2bundle/yii2-domain';
+	const PACKAGE = 'yii2rails/yii2-domain';
 	
 	public function testOne()
 	{
