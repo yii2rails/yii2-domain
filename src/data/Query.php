@@ -26,6 +26,7 @@ class Query extends Component {
 	const LIMIT = 'limit';
 	const OFFSET = 'offset';
 	const ORDER = 'order';
+    const JOIN = 'join';
 	
 	private $query = [
 		self::WHERE => null,
@@ -60,7 +61,17 @@ class Query extends Component {
 		}
 		return new Query();
 	}
-	
+
+    public function join($type, $table, $on = '', $params = []) {
+        $this->query[self::JOIN] = [
+            'type' => $type,
+            'table' => $table,
+            'on' => $on,
+            'params' => $params,
+        ];
+        return $this;
+    }
+
 	public function setNestedQuery($key, Query $query) {
 		$this->query['nestedQuery'][$key] = $query;
 		return $this;
