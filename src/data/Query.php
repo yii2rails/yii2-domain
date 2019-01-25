@@ -4,6 +4,7 @@ namespace yii2lab\domain\data;
 
 use Yii;
 use yii\db\Expression;
+use yii2lab\db\domain\helpers\TableHelper;
 use yii2lab\domain\data\query\Rest;
 use yii2lab\extension\common\helpers\TypeHelper;
 use yii\base\Component;
@@ -63,6 +64,7 @@ class Query extends Component {
 	}
 
     public function join($type, $table, $on = '', $params = []) {
+        $table = TableHelper::getGlobalName($table);
         $this->query[self::JOIN] = [
             'type' => $type,
             'table' => $table,
