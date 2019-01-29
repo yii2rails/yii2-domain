@@ -51,104 +51,16 @@
 Объявлять домены можно в файле конфигурации:
 
 ```
-common\config\services.php
+common\config\domains.php
 ```
 
 Для своих нужд можете переобъявлять свои домены в конфиге:
 
 ```
-common\config\services-local.php
+common\config\domains-local.php
 ```
 
 эта конфига не включена в GIT.
-
-Полный формат объявления домена:
-
-```php
-return [
-	'components' => [
-		'geo' => [
-			'class' => 'common\ddd\Domain',
-			'repositories' => [
-				'country' => [
-					'class' => 'api\v4\modules\geo\repositories\ar\CountryRepository',
-				],
-				// можно подставлять драйвер хранилища в отдельном параметре
-				'region' => [
-					'class' => 'api\v4\modules\geo\repositories\{driver}\RegionRepository',
-					'driver' => 'ar',
-				],
-				'city' => [
-					'class' => 'api\v4\modules\geo\repositories\ar\CityRepository',
-				],
-			],
-			'services' => [
-				'country' => [
-					'class' => 'api\v4\modules\geo\services\СountryService',
-				],
-				'region' => [
-					'class' => 'api\v4\modules\geo\services\RegionService',
-				],
-				'city' => [
-					'class' => 'api\v4\modules\geo\services\СityService',
-				],
-			],
-		],
-	],
-];
-```
-
-Сокращенный формат:
-
-```php
-return [
-	'components' => [
-		'geo' => [
-			'class' => 'common\ddd\Domain',
-			// указываем базовый путь к домену
-			'path' => 'api\v4\modules\geo',
-			'repositories' => [
-				'country' => 'ar',
-				'region' => 'ar',
-				'city' => 'ar',
-			],
-			'services' => [
-				'country' => null,
-				'region' => null,
-				// можно напрямую указать класс
-				'city' => 'api\v4\modules\geo\services\СityService',
-			],
-		],
-	],
-];
-```
-
-Микро-формат:
-
-```php
-return [
-	'components' => [
-		'geo' => [
-			'class' => 'common\ddd\Domain',
-			// указываем базовый путь к домену
-			'path' => 'api\v4\modules\geo',
-			// указываем каким дравером хранилища пользоваться по умолчанию
-			'defaultDriver' => 'ar',
-			'repositories' => [
-				'country',
-				'region',
-				// указываем конкретный драйвер
-				'city' => 'tps',
-			],
-			'services' => [
-				'country',
-				'region',
-				'city',
-			],
-		],
-	],
-];
-```
 
 Для хранилищ и сервисов используются общие приципы:
 
@@ -202,19 +114,19 @@ Yii::$app->geo->city;
 Вызвать метод сервиса:
 
 ```php
-$allCities = Yii::$app->geo->city->all();
+$allCities = \App::$domain->geo->city->all();
 ```
 
 Обратиться к объекту хранилища:
 
 ```php
-Yii::$app->geo->repositories->city
+\App::$domain->geo->repositories->city
 ```
 
 Вызвать метод хранилища:
 
 ```php
-$allCities = Yii::$app->geo->repositories->city->all();
+$allCities = \App::$domain->geo->repositories->city->all();
 ```
 Внутри класса сервиса и хранилища можно обращаться к ресурсам домена так:
 
