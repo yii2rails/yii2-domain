@@ -19,18 +19,8 @@ class ActiveController extends Controller {
 	const ACTION_DELETE = 'yii2lab\domain\web\actions\DeleteAction';
 
 	public $formClass;
-	public $baseUrl;
 	public $titleName = 'title';
 
-	public function getBaseUrl() {
-		if(empty($this->baseUrl)) {
-			$baseUrl = '/' . Yii::$app->controller->module->id . '/' . Yii::$app->controller->id;
-			$baseUrl = rtrim($baseUrl, '/') . '/';
-			$this->baseUrl = $baseUrl;
-		}
-		return $this->baseUrl;
-	}
-	
 	public function behaviors() {
 		$behaviors = [];
 		foreach($this->service->access() as $access) {

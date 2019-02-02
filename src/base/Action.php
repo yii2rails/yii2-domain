@@ -39,7 +39,7 @@ class Action extends YiiAction {
 		$this->initControllerProp('titleName');
 		$this->initControllerProp('service');
 		$this->initControllerProp('view');
-		$this->baseUrl = $this->controller->getBaseUrl();
+		$this->baseUrl = ControllerHelper::getUrl();
 		if(!isset($this->query)) {
 			$this->query = ClientHelper::getQueryFromRequest(Yii::$app->request->getQueryParams());
 		}
