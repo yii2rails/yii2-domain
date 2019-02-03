@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2lab\domain\interfaces\repositories;
+namespace yii2rails\domain\interfaces\repositories;
 
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 
 interface ReadOneInterface extends RepositoryInterface {
 	
 	/*
 	 * @param Query|null $query
 	 *
-	 * @return \yii2lab\domain\BaseEntity
+	 * @return \yii2rails\domain\BaseEntity
 	 * @throws \yii\web\NotFoundHttpException
 	 */
 	//public function one(Query $query = null);
@@ -18,7 +18,7 @@ interface ReadOneInterface extends RepositoryInterface {
 	 * @param            $id
 	 * @param Query|null $query
 	 *
-	 * @return \yii2lab\domain\BaseEntity
+	 * @return \yii2rails\domain\BaseEntity
 	 * @throws \yii\web\NotFoundHttpException
 	 */
 	public function oneById($id, Query $query = null);

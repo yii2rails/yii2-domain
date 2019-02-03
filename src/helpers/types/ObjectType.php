@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2lab\domain\helpers\types;
+namespace yii2rails\domain\helpers\types;
 
 use yii\base\InvalidArgumentException;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\BaseEntity;
-use yii2lab\extension\arrayTools\helpers\Collection;
-use yii2lab\domain\data\EntityCollection;
-use yii2lab\domain\helpers\Helper;
-use yii2lab\domain\values\BaseValue;
+use yii2rails\domain\BaseEntity;
+use yii2rails\extension\arrayTools\helpers\Collection;
+use yii2rails\domain\data\EntityCollection;
+use yii2rails\domain\helpers\Helper;
+use yii2rails\domain\values\BaseValue;
 
 class ObjectType extends BaseType {
 	

@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\data\query;
+namespace yii2rails\domain\data\query;
 
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 
 class Rest extends Component {
 	

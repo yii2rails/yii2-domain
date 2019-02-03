@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\base\UnknownPropertyException;
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\entities\ServiceExecutorEntity;
-use yii2lab\domain\interfaces\services\ReadOneInterface;
-use yii2lab\domain\services\base\BaseService;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\entities\ServiceExecutorEntity;
+use yii2rails\domain\interfaces\services\ReadOneInterface;
+use yii2rails\domain\services\base\BaseService;
 use yii2mod\helpers\ArrayHelper;
 
 class ServiceHelper {

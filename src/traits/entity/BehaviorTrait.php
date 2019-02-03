@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\traits\entity;
+namespace yii2rails\domain\traits\entity;
 
 trait BehaviorTrait {
 	

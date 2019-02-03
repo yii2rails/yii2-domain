@@ -3,7 +3,7 @@
 
 ## Основное
 
-У всех, представленных ниже фильтров нейспейс такой: `yii2lab\domain\filters\*`.
+У всех, представленных ниже фильтров нейспейс такой: `yii2rails\domain\filters\*`.
 
 ## Фильтры
 
@@ -11,7 +11,7 @@
 
 загрузчик конфига доменных сущностей.
 
-Основан на фильтре `yii2lab\app\domain\filters\config\LoadConfig`.
+Основан на фильтре `yii2rails\app\domain\filters\config\LoadConfig`.
 
 Параметры:
 

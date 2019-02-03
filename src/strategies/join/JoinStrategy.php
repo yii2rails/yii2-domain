@@ -1,21 +1,21 @@
 <?php
 
-namespace yii2lab\domain\strategies\join;
+namespace yii2rails\domain\strategies\join;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\dto\WithDto;
-use yii2lab\domain\entities\relation\RelationEntity;
-use yii2lab\domain\enums\RelationEnum;
-use yii2lab\extension\scenario\base\BaseStrategyContextHandlers;
-use yii2lab\domain\strategies\join\handlers\One;
-use yii2lab\domain\strategies\join\handlers\Many;
-use yii2lab\domain\strategies\join\handlers\ManyToMany;
-use yii2lab\domain\strategies\join\handlers\HandlerInterface;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\dto\WithDto;
+use yii2rails\domain\entities\relation\RelationEntity;
+use yii2rails\domain\enums\RelationEnum;
+use yii2rails\extension\scenario\base\BaseStrategyContextHandlers;
+use yii2rails\domain\strategies\join\handlers\One;
+use yii2rails\domain\strategies\join\handlers\Many;
+use yii2rails\domain\strategies\join\handlers\ManyToMany;
+use yii2rails\domain\strategies\join\handlers\HandlerInterface;
 
 /**
  * Class PaymentStrategy
  *
- * @package yii2lab\domain\strategies\payment
+ * @package yii2rails\domain\strategies\payment
  *
  * @property-read HandlerInterface $strategyInstance
  */

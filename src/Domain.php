@@ -1,24 +1,24 @@
 <?php
 
-namespace yii2lab\domain;
+namespace yii2rails\domain;
 
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\enums\Driver;
-use yii2lab\domain\factories\Factory;
+use yii2rails\domain\enums\Driver;
+use yii2rails\domain\factories\Factory;
 use Yii;
 use yii\base\BaseObject;
 use yii\base\UnknownPropertyException;
-use yii2lab\domain\helpers\factory\RepositoryFactoryHelper;
-use yii2lab\domain\helpers\factory\ServiceFactoryHelper;
-use yii2lab\domain\locators\RepositoryLocator;
-use yii2lab\domain\locators\ServiceLocator;
-use yii2lab\extension\common\helpers\ClassHelper;
-use yii2lab\domain\services\base\BaseService;
+use yii2rails\domain\helpers\factory\RepositoryFactoryHelper;
+use yii2rails\domain\helpers\factory\ServiceFactoryHelper;
+use yii2rails\domain\locators\RepositoryLocator;
+use yii2rails\domain\locators\ServiceLocator;
+use yii2rails\extension\common\helpers\ClassHelper;
+use yii2rails\domain\services\base\BaseService;
 
 /**
  * Class Domain
  *
- * @package yii2lab\domain
+ * @package yii2rails\domain
  *
  * @property string $id
  * @property string $path

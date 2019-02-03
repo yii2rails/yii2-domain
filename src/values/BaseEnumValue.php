@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\values;
+namespace yii2rails\domain\values;
 
 use yii\base\InvalidConfigException;
-use yii2lab\extension\common\helpers\ReflectionHelper;
+use yii2rails\extension\common\helpers\ReflectionHelper;
 use yii2mod\helpers\ArrayHelper;
 
 abstract class BaseEnumValue extends BaseValue {

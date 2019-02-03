@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2lab\domain\strategies\join\handlers;
+namespace yii2rails\domain\strategies\join\handlers;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\dto\WithDto;
-use yii2lab\domain\entities\relation\RelationEntity;
-use yii2lab\domain\helpers\repository\RelationRepositoryHelper;
-use yii2lab\extension\arrayTools\helpers\ArrayIterator;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\dto\WithDto;
+use yii2rails\domain\entities\relation\RelationEntity;
+use yii2rails\domain\helpers\repository\RelationRepositoryHelper;
+use yii2rails\extension\arrayTools\helpers\ArrayIterator;
 
 class Many extends Base implements HandlerInterface {
 	

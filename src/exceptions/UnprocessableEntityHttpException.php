@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\exceptions;
+namespace yii2rails\domain\exceptions;
 
 
 use yii\base\InvalidArgumentException;
-use yii2lab\domain\helpers\ErrorCollection;
+use yii2rails\domain\helpers\ErrorCollection;
 use Exception;
 use yii\helpers\ArrayHelper;
 use yii\web\HttpException;

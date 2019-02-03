@@ -4,7 +4,7 @@ namespace tests\unit\helpers;
 
 use yii2lab\test\Test\Unit;
 use yii\base\Model;
-use yii2lab\domain\helpers\DomainHelper;
+use yii2rails\domain\helpers\DomainHelper;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use yii2module\account\domain\v2\helpers\TestAuthHelper;
 

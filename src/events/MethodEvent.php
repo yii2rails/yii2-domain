@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\events;
+namespace yii2rails\domain\events;
 
 use yii\base\Event;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\extension\arrayTools\helpers\Collection;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\extension\arrayTools\helpers\Collection;
 
 class MethodEvent extends Event {
 	

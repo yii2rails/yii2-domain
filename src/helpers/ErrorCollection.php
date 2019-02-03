@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use Yii;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 
 class ErrorCollection {
 	

@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\behaviors\query;
+namespace yii2rails\domain\behaviors\query;
 
-use yii2lab\domain\data\Query;
-use yii2lab\extension\common\helpers\TypeHelper;
+use yii2rails\domain\data\Query;
+use yii2rails\extension\common\helpers\TypeHelper;
 
 class PerPageLimitFilter extends BaseQueryFilter {
 	

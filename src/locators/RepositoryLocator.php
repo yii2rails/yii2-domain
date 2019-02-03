@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\locators;
+namespace yii2rails\domain\locators;
 
-use yii2lab\domain\Domain;
-use yii2lab\domain\repositories\BaseRepository;
+use yii2rails\domain\Domain;
+use yii2rails\domain\repositories\BaseRepository;
 
 /**
  * @method BaseRepository get($id)

@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use yii2module\lang\domain\helpers\LangHelper;
 

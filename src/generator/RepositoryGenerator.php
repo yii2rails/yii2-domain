@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\generator;
+namespace yii2rails\domain\generator;
 
-use yii2lab\extension\activeRecord\repositories\base\BaseActiveArRepository;
-use yii2lab\extension\code\entities\ClassEntity;
-use yii2lab\extension\code\enums\AccessEnum;
+use yii2rails\extension\activeRecord\repositories\base\BaseActiveArRepository;
+use yii2rails\extension\code\entities\ClassEntity;
+use yii2rails\extension\code\enums\AccessEnum;
 
 class RepositoryGenerator extends BaseGenerator {
 

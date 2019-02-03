@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2lab\domain\web\actions;
+namespace yii2rails\domain\web\actions;
 
-use yii2lab\domain\base\Action;
+use yii2rails\domain\base\Action;
 
 class ViewAction extends Action {
 	

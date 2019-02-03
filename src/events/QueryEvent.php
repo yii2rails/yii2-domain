@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\events;
+namespace yii2rails\domain\events;
 
 /**
  * Class QueryEvent
  *
- * @package yii2lab\domain\events
+ * @package yii2rails\domain\events
  * @deprecated
  */
 class QueryEvent extends MethodEvent {

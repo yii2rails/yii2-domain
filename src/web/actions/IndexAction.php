@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\web\actions;
+namespace yii2rails\domain\web\actions;
 
 use Yii;
 use yii\base\Model;
-use yii2lab\domain\base\Action;
-use yii2lab\domain\data\ActiveDataProvider;
+use yii2rails\domain\base\Action;
+use yii2rails\domain\data\ActiveDataProvider;
 
 class IndexAction extends Action {
 	

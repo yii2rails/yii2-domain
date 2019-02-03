@@ -3,7 +3,7 @@ namespace tests\unit\values;
 
 use yii2lab\test\Test\Unit;
 use yii\base\InvalidArgumentException;
-use yii2lab\domain\values\StringValue;
+use yii2rails\domain\values\StringValue;
 
 class StringValueTest extends Unit
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use yii\base\InvalidConfigException;
-use yii2lab\extension\common\helpers\ClassHelper;
-use yii2lab\extension\common\helpers\TypeHelper;
+use yii2rails\extension\common\helpers\ClassHelper;
+use yii2rails\extension\common\helpers\TypeHelper;
 
 class EntityType {
 	

@@ -2,7 +2,7 @@
 
 namespace tests\_source\values;
 
-use yii2lab\domain\values\BaseEnumValue;
+use yii2rails\domain\values\BaseEnumValue;
 
 class ModeEnumValue extends BaseEnumValue
 {

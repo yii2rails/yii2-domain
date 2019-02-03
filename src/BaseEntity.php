@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2lab\domain;
+namespace yii2rails\domain;
 
 use yii\base\InvalidCallException;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\helpers\EntityType;
-use yii2lab\domain\helpers\Helper;
-use yii2lab\domain\interfaces\ValueObjectInterface;
-use yii2lab\domain\traits\entity\ValidatorTrait;
-use yii2lab\extension\common\helpers\ReflectionHelper;
+use yii2rails\domain\helpers\EntityType;
+use yii2rails\domain\helpers\Helper;
+use yii2rails\domain\interfaces\ValueObjectInterface;
+use yii2rails\domain\traits\entity\ValidatorTrait;
+use yii2rails\extension\common\helpers\ReflectionHelper;
 use ReflectionClass;
 use ReflectionProperty;
 use yii\base\Arrayable;
@@ -17,7 +17,7 @@ use DateTime;
 use Yii;
 use yii\base\Behavior;
 use yii\base\UnknownPropertyException;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\domain\values\TimeValue;
 
 class BaseEntity extends Component implements Arrayable {
 

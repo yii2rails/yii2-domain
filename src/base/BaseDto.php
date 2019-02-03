@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\base;
+namespace yii2rails\domain\base;
 
 use yii\base\Model;
 

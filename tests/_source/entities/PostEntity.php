@@ -5,9 +5,9 @@ namespace tests\_source\entities;
 use yii\behaviors\AttributeBehavior;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\values\ArrayValue;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\values\ArrayValue;
+use yii2rails\domain\values\TimeValue;
 
 /**
  * Class PostEntity

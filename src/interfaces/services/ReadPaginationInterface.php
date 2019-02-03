@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\interfaces\services;
+namespace yii2rails\domain\interfaces\services;
 
 use yii\data\DataProviderInterface;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 
 interface ReadPaginationInterface {
 	

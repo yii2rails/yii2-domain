@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\factories;
+namespace yii2rails\domain\factories;
 
 use Yii;
 use yii\helpers\Inflector;
-use yii2lab\extension\filedb\base\FiledbActiveRecord;
-use yii2lab\extension\code\helpers\generator\ClassGeneratorHelper;
+use yii2rails\extension\filedb\base\FiledbActiveRecord;
+use yii2rails\extension\code\helpers\generator\ClassGeneratorHelper;
 
 class ModelFactory extends BaseFactory {
 	

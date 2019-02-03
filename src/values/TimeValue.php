@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\values;
+namespace yii2rails\domain\values;
 
 use DateTime;
 

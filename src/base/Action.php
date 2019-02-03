@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2lab\domain\base;
+namespace yii2rails\domain\base;
 
 use Yii;
 use yii\base\Action as YiiAction;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\web\ActiveController;
-use yii2lab\extension\common\helpers\ClassHelper;
-use yii2lab\extension\web\helpers\ControllerHelper;
-use yii2lab\extension\web\helpers\ClientHelper;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\web\ActiveController;
+use yii2rails\extension\common\helpers\ClassHelper;
+use yii2rails\extension\web\helpers\ControllerHelper;
+use yii2rails\extension\web\helpers\ClientHelper;
 
 /**
  * Class Action
  *
- * @package yii2lab\domain\base
+ * @package yii2rails\domain\base
  *
  * @property ActiveController $controller
  */

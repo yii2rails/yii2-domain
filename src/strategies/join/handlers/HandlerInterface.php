@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\strategies\join\handlers;
+namespace yii2rails\domain\strategies\join\handlers;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\dto\WithDto;
-use yii2lab\domain\entities\relation\RelationEntity;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\dto\WithDto;
+use yii2rails\domain\entities\relation\RelationEntity;
 
 interface HandlerInterface {
 	

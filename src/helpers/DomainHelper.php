@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use Yii;
 use yii\base\InvalidArgumentException;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\Domain;
-use yii2lab\extension\common\helpers\ClassHelper;
-use yii2lab\extension\common\helpers\Helper;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\Domain;
+use yii2rails\extension\common\helpers\ClassHelper;
+use yii2rails\extension\common\helpers\Helper;
 use yii2mod\helpers\ArrayHelper;
 
 class DomainHelper {

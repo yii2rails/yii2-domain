@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2lab\domain\entities\relation;
+namespace yii2rails\domain\entities\relation;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\enums\RelationEnum;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\enums\RelationEnum;
 
 /**
  * Class RelationEntity
  *
- * @package yii2lab\domain\entities\relation
+ * @package yii2rails\domain\entities\relation
  *
  * @property $type
  * @property $field

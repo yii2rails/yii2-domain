@@ -1,18 +1,18 @@
 <?php
 
-namespace yii2lab\domain\services\base;
+namespace yii2rails\domain\services\base;
 
-use yii2lab\domain\Domain;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\Domain;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use Yii;
 use yii\base\Component as YiiComponent;
-use yii2lab\domain\repositories\BaseRepository;
-use yii2lab\domain\traits\ReadEventTrait;
+use yii2rails\domain\repositories\BaseRepository;
+use yii2rails\domain\traits\ReadEventTrait;
 
 /**
  * Class BaseService
  *
- * @package yii2lab\domain\services
+ * @package yii2rails\domain\services
  *
  * @property BaseRepository $repository
  * @property Domain $domain

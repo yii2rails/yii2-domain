@@ -1,17 +1,17 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\enums\RelationEnum;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\enums\RelationEnum;
 
 /**
  * Class RelationHelper
  *
- * @package yii2lab\domain\helpers
+ * @package yii2rails\domain\helpers
  *
  * @deprecated
  */

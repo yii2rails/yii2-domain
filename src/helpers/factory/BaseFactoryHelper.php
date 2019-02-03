@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\helpers\factory;
+namespace yii2rails\domain\helpers\factory;
 
 use Yii;
-use yii2lab\domain\Domain;
-use yii2lab\extension\common\helpers\ClassHelper;
+use yii2rails\domain\Domain;
+use yii2rails\extension\common\helpers\ClassHelper;
 
 abstract class BaseFactoryHelper {
 	

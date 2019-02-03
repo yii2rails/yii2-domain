@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\values;
+namespace yii2rails\domain\values;
 
-use yii2lab\extension\arrayTools\helpers\Collection;
-use yii2lab\extension\arrayTools\base\BaseCollection;
-use yii2lab\extension\common\helpers\ClassHelper;
+use yii2rails\extension\arrayTools\helpers\Collection;
+use yii2rails\extension\arrayTools\base\BaseCollection;
+use yii2rails\extension\common\helpers\ClassHelper;
 use yii2mod\helpers\ArrayHelper;
 
 class ArrayValue extends BaseValue {

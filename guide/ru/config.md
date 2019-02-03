@@ -7,13 +7,13 @@
 Например:
 
 ```php
-use yii2lab\domain\enums\Driver;
+use yii2rails\domain\enums\Driver;
 
 return [
 	'components' => [
 		// ...
 		'lang' => [
-            'class' => 'yii2lab\domain\Domain',
+            'class' => 'yii2rails\domain\Domain',
             'path' => 'yii2module\lang\domain',
             'repositories' => [
                 'language' => Driver::DISC,
@@ -32,13 +32,13 @@ return [
 Он нужен для централизованной смены драйвера.
 
 ```php
-use yii2lab\domain\enums\Driver;
+use yii2rails\domain\enums\Driver;
 
 return [
 	'components' => [
 		// ...
 		'account' => [
-			'class' => 'yii2lab\domain\Domain',
+			'class' => 'yii2rails\domain\Domain',
 			'path' => 'yii2module\account\domain\v2',
 			'repositories' => [
 				'auth' => Driver::remote(),

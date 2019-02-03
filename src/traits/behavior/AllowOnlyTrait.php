@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\traits\behavior;
+namespace yii2rails\domain\traits\behavior;
 
 trait AllowOnlyTrait {
 	

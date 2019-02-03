@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\generator;
+namespace yii2rails\domain\generator;
 
-use yii2lab\domain\interfaces\services\CrudInterface;
-use yii2lab\extension\code\entities\InterfaceEntity;
+use yii2rails\domain\interfaces\services\CrudInterface;
+use yii2rails\extension\code\entities\InterfaceEntity;
 
 class ServiceInterfaceGenerator extends BaseGenerator {
 

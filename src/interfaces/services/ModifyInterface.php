@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2lab\domain\interfaces\services;
+namespace yii2rails\domain\interfaces\services;
 
-use yii2lab\domain\BaseEntity;
+use yii2rails\domain\BaseEntity;
 
 interface ModifyInterface {
 	
 	/**
 	 * @param $data array
 	 *
-	 * @throws \yii2lab\domain\exceptions\UnprocessableEntityHttpException
+	 * @throws \yii2rails\domain\exceptions\UnprocessableEntityHttpException
 	 */
 	public function create($data);
 	
@@ -20,7 +20,7 @@ interface ModifyInterface {
 	 * @param $data|BaseEntity array
 	 *
 	 * @throws \yii\web\NotFoundHttpException
-	 * @throws \yii2lab\domain\exceptions\UnprocessableEntityHttpException
+	 * @throws \yii2rails\domain\exceptions\UnprocessableEntityHttpException
 	 */
 	
 	public function updateById($id, $data);

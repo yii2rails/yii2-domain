@@ -1,31 +1,31 @@
 <?php
 
-namespace yii2lab\domain\services\base;
+namespace yii2rails\domain\services\base;
 
 use yii\base\InvalidArgumentException;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\enums\ActiveMethodEnum;
-use yii2lab\domain\helpers\ErrorCollection;
-use yii2lab\domain\interfaces\repositories\ReadExistsInterface;
-use yii2lab\domain\interfaces\repositories\SearchInterface;
-use yii2lab\domain\interfaces\services\CrudInterface;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\enums\ActiveMethodEnum;
+use yii2rails\domain\helpers\ErrorCollection;
+use yii2rails\domain\interfaces\repositories\ReadExistsInterface;
+use yii2rails\domain\interfaces\repositories\SearchInterface;
+use yii2rails\domain\interfaces\services\CrudInterface;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii\base\ActionEvent;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\web\ServerErrorHttpException;
-use yii2lab\domain\data\ActiveDataProvider;
-use yii2lab\extension\activeRecord\helpers\SearchHelper;
-use yii2lab\extension\common\exceptions\DeprecatedException;
+use yii2rails\domain\data\ActiveDataProvider;
+use yii2rails\extension\activeRecord\helpers\SearchHelper;
+use yii2rails\extension\common\exceptions\DeprecatedException;
 
 /**
  * Class ActiveBaseService
  *
- * @package yii2lab\domain\services
+ * @package yii2rails\domain\services
  *
- * @property-read \yii2lab\domain\interfaces\repositories\CrudInterface|SearchInterface|ReadExistsInterface $repository
+ * @property-read \yii2rails\domain\interfaces\repositories\CrudInterface|SearchInterface|ReadExistsInterface $repository
  */
 class BaseActiveService extends BaseService implements CrudInterface {
 	
@@ -35,7 +35,7 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	const EVENT_UPDATE = 'update';
 	const EVENT_DELETE = 'delete';
 	
-	/** @var \yii2lab\domain\BaseEntity */
+	/** @var \yii2rails\domain\BaseEntity */
 	public $foreignServices;
 	public $forbiddenChangeFields;
 	
@@ -96,7 +96,7 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	 * @param            $id
 	 * @param Query|null $query
 	 *
-	 * @return \yii2lab\domain\BaseEntity $entity
+	 * @return \yii2rails\domain\BaseEntity $entity
 	 * @throws NotFoundHttpException
 	 * @throws \yii\web\ServerErrorHttpException
 	 */
@@ -134,7 +134,7 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		$data = ArrayHelper::toArray($data);
 		$this->validateForeign($data);
 		$this->validateForbiddenChangeFields($data);
-		/** @var \yii2lab\domain\BaseEntity $entity */
+		/** @var \yii2rails\domain\BaseEntity $entity */
 		$entity = $this->domain->factory->entity->create($this->id, $data);
 		
 		$entity->validate();

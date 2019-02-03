@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2lab\domain\traits;
+namespace yii2rails\domain\traits;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\enums\ActiveMethodEnum;
-use yii2lab\domain\enums\EventEnum;
-use yii2lab\domain\events\QueryEvent;
-use yii2lab\domain\events\ReadEvent;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\enums\ActiveMethodEnum;
+use yii2rails\domain\enums\EventEnum;
+use yii2rails\domain\events\QueryEvent;
+use yii2rails\domain\events\ReadEvent;
 
 trait ReadEventTrait {
 	

@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2lab\domain\helpers\repository;
+namespace yii2rails\domain\helpers\repository;
 
 use yii\base\BaseObject;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\repositories\BaseRepository;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\repositories\BaseRepository;
 
 /**
  * Class QueryFilter
  *
- * @package yii2lab\domain\helpers\repository
+ * @package yii2rails\domain\helpers\repository
  *
  * @property Query $query
  */

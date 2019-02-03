@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\interfaces\services;
+namespace yii2rails\domain\interfaces\services;
 
 interface CrudInterface extends ReadInterface, ModifyInterface {
 

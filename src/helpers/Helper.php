@@ -1,12 +1,12 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 
 class Helper {
 	

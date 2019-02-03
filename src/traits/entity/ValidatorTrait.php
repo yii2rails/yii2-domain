@@ -1,17 +1,17 @@
 <?php
 
-namespace yii2lab\domain\traits\entity;
+namespace yii2rails\domain\traits\entity;
 
 use yii\base\ModelEvent;
 use yii\base\InvalidCallException;
 use yii\base\Event;
 use yii\base\Component;
 use yii\base\InvalidArgumentException;
-use yii2lab\domain\exceptions\ReadOnlyException;
-use yii2lab\domain\helpers\EntityType;
-use yii2lab\domain\helpers\Helper;
-use yii2lab\extension\common\helpers\ReflectionHelper;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\exceptions\ReadOnlyException;
+use yii2rails\domain\helpers\EntityType;
+use yii2rails\domain\helpers\Helper;
+use yii2rails\extension\common\helpers\ReflectionHelper;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use ReflectionClass;
 use ReflectionProperty;
 use yii\base\Arrayable;
@@ -20,8 +20,8 @@ use DateTime;
 use Yii;
 use yii\base\Behavior;
 use yii\base\UnknownPropertyException;
-use yii2lab\domain\values\BaseValue;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\domain\values\BaseValue;
+use yii2rails\domain\values\TimeValue;
 use ArrayAccess;
 use ArrayIterator;
 use ArrayObject;

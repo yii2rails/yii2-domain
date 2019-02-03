@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2lab\domain\data;
+namespace yii2rails\domain\data;
 
 use Yii;
 use yii\db\Expression;
 use yii2lab\db\domain\helpers\TableHelper;
-use yii2lab\domain\data\query\Rest;
-use yii2lab\extension\common\helpers\TypeHelper;
+use yii2rails\domain\data\query\Rest;
+use yii2rails\extension\common\helpers\TypeHelper;
 use yii\base\Component;
 use yii2mod\helpers\ArrayHelper;
 
 /**
  * Class Query
  *
- * @package yii2lab\domain\data
+ * @package yii2rails\domain\data
  *
  * @property Rest $rest
  */

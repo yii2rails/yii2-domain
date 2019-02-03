@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\factories;
+namespace yii2rails\domain\factories;
 
 /**
  * Class Factory
  *
- * @package yii2lab\domain\factories
+ * @package yii2rails\domain\factories
  *
  * @property EntityFactory $entity
  * @property BaseFactory $helper

@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2lab\domain\filters;
+namespace yii2rails\domain\filters;
 
 use Yii;
 use App;
-use yii2lab\app\domain\helpers\CacheHelper;
-use yii2lab\domain\base\BaseDomainLocator;
-use yii2lab\extension\scenario\base\BaseScenario;
-use yii2lab\extension\scenario\collections\ScenarioCollection;
-use yii2lab\extension\scenario\helpers\ScenarioHelper;
+use yii2rails\app\domain\helpers\CacheHelper;
+use yii2rails\domain\base\BaseDomainLocator;
+use yii2rails\extension\scenario\base\BaseScenario;
+use yii2rails\extension\scenario\collections\ScenarioCollection;
+use yii2rails\extension\scenario\helpers\ScenarioHelper;
 
 class DefineDomainLocator extends BaseScenario
 {

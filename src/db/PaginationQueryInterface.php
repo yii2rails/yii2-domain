@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii2lab\domain\db;
+namespace yii2rails\domain\db;
 
 /**
  * @deprecated

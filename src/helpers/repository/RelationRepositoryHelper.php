@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2lab\domain\helpers\repository;
+namespace yii2rails\domain\helpers\repository;
 
 use yii\base\BaseObject;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\entities\relation\BaseForeignEntity;
-use yii2lab\domain\enums\RelationClassTypeEnum;
-use yii2lab\domain\interfaces\services\ReadAllInterface;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\entities\relation\BaseForeignEntity;
+use yii2rails\domain\enums\RelationClassTypeEnum;
+use yii2rails\domain\interfaces\services\ReadAllInterface;
 
 class RelationRepositoryHelper {
 	

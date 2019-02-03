@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\repositories\relations;
+namespace yii2rails\domain\repositories\relations;
 
 class BaseSchema {
 	

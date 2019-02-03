@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\web;
+namespace yii2rails\domain\web;
 
 use yii\web\Controller as YiiController;
-use yii2lab\extension\web\helpers\ControllerHelper;
+use yii2rails\extension\web\helpers\ControllerHelper;
 
 class Controller extends YiiController {
 	

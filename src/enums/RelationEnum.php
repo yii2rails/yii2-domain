@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2lab\domain\enums;
+namespace yii2rails\domain\enums;
 
-use yii2lab\extension\enum\base\BaseEnum;
+use yii2rails\extension\enum\base\BaseEnum;
 
 class RelationEnum extends BaseEnum {
 	

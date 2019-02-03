@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\traits\repository;
+namespace yii2rails\domain\traits\repository;
 
 use Yii;
-use yii2lab\domain\Alias;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\Alias;
+use yii2rails\domain\data\Query;
 use yii\web\NotFoundHttpException;
 use yii\base\InvalidArgumentException;
 use yii2mod\helpers\ArrayHelper;
@@ -12,7 +12,7 @@ use yii2mod\helpers\ArrayHelper;
 /**
  * Trait ReadTrait
  *
- * @package yii2lab\domain\traits\repository
+ * @package yii2rails\domain\traits\repository
  *
  * @property $primaryKey
  */

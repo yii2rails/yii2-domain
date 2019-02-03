@@ -1,6 +1,6 @@
 <?php
 
-use yii2lab\extension\yii\helpers\FileHelper;
+use yii2rails\extension\yii\helpers\FileHelper;
 
 $testDir = FileHelper::up(__DIR__, 3);
 

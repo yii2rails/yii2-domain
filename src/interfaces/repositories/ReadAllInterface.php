@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\interfaces\repositories;
+namespace yii2rails\domain\interfaces\repositories;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
 
 interface ReadAllInterface extends RepositoryInterface {
 	

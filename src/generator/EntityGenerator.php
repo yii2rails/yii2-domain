@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2lab\domain\generator;
+namespace yii2rails\domain\generator;
 
-use yii2lab\extension\code\entities\ClassEntity;
+use yii2rails\extension\code\entities\ClassEntity;
 
 class EntityGenerator extends BaseGenerator {
 
 	public $name;
 	public $defaultUses = [
-		['name' => 'yii2lab\domain\BaseEntity'],
+		['name' => 'yii2rails\domain\BaseEntity'],
 	];
 	
 	public function run() {

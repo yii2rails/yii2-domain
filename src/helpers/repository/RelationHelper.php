@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2lab\domain\helpers\repository;
+namespace yii2rails\domain\helpers\repository;
 
 use Yii;
-use yii2lab\domain\strategies\join\JoinStrategy;
-use yii2lab\extension\arrayTools\helpers\Collection;
-use yii2lab\domain\data\EntityCollection;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\dto\WithDto;
-use yii2lab\domain\exceptions\BadQueryHttpException;
-use yii2lab\domain\helpers\DomainHelper;
+use yii2rails\domain\strategies\join\JoinStrategy;
+use yii2rails\extension\arrayTools\helpers\Collection;
+use yii2rails\domain\data\EntityCollection;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\dto\WithDto;
+use yii2rails\domain\exceptions\BadQueryHttpException;
+use yii2rails\domain\helpers\DomainHelper;
 
 class RelationHelper {
 	

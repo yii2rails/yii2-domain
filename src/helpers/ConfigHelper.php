@@ -1,12 +1,12 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use ReflectionException;
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii2lab\extension\common\helpers\ClassHelper;
-use yii2lab\extension\common\helpers\Helper;
+use yii2rails\extension\common\helpers\ClassHelper;
+use yii2rails\extension\common\helpers\Helper;
 
 class ConfigHelper {
 	

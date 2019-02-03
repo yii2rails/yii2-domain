@@ -1,22 +1,22 @@
 <?php
 
-namespace yii2lab\domain\interfaces\repositories;
+namespace yii2rails\domain\interfaces\repositories;
 
-use yii2lab\domain\BaseEntity;
+use yii2rails\domain\BaseEntity;
 
 interface ModifyInterface extends RepositoryInterface {
 	
 	/**
 	 * @param BaseEntity $entity
 	 *
-	 * @throws \yii2lab\domain\exceptions\UnprocessableEntityHttpException
+	 * @throws \yii2rails\domain\exceptions\UnprocessableEntityHttpException
 	 */
 	public function insert(BaseEntity $entity);
 
 	/**
 	 * @param BaseEntity $entity
 	 *
-	 * @throws \yii2lab\domain\exceptions\UnprocessableEntityHttpException
+	 * @throws \yii2rails\domain\exceptions\UnprocessableEntityHttpException
 	 */
 	public function update(BaseEntity $entity);
 	

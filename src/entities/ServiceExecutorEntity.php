@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2lab\domain\entities;
+namespace yii2rails\domain\entities;
 
 use yii\base\InvalidArgumentException;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\BaseEntity;
+use yii2rails\domain\BaseEntity;
 
 /**
  * Class ServiceExecutorEntity
- * @package yii2lab\domain\entities
+ * @package yii2rails\domain\entities
  *
  * @property $id string
  * @property $service string

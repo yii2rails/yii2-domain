@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\helpers\types;
+namespace yii2rails\domain\helpers\types;
 
 class BooleanType extends BaseType {
 	

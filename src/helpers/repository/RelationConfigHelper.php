@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\helpers\repository;
+namespace yii2rails\domain\helpers\repository;
 
-use yii2lab\domain\entities\relation\RelationEntity;
-use yii2lab\domain\helpers\Helper;
+use yii2rails\domain\entities\relation\RelationEntity;
+use yii2rails\domain\helpers\Helper;
 
 class RelationConfigHelper {
 	

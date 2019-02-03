@@ -3,8 +3,8 @@
 namespace tests\unit\domain;
 
 use tests\_source\entities\PostEntity;
-use yii2lab\domain\values\ArrayValue;
-use yii2lab\extension\arrayTools\base\BaseCollection;
+use yii2rails\domain\values\ArrayValue;
+use yii2rails\extension\arrayTools\base\BaseCollection;
 use yii2lab\test\Test\Unit;
 use yii2module\account\domain\v2\helpers\TestAuthHelper;
 

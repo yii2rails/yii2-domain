@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\interfaces;
+namespace yii2rails\domain\interfaces;
 
 interface ValueObjectInterface {
 

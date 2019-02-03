@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2lab\domain\behaviors\query;
+namespace yii2rails\domain\behaviors\query;
 
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 
 /**
  * Class QueryFilter
@@ -21,7 +21,7 @@ use yii2lab\domain\data\Query;
  * }
  * ],
  *
- * @package yii2lab\domain\behaviors\query
+ * @package yii2rails\domain\behaviors\query
  */
 class QueryFilter extends BaseQueryFilter {
 	

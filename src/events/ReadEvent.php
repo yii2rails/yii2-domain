@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\events;
+namespace yii2rails\domain\events;
 
 /**
  * Class ReadEvent
  *
- * @package yii2lab\domain\events
+ * @package yii2rails\domain\events
  * @deprecated
  */
 class ReadEvent extends MethodEvent {

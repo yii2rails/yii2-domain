@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\traits;
+namespace yii2rails\domain\traits;
 
 use Closure;
 use Yii;

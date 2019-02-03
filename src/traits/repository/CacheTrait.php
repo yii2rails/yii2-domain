@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\traits\repository;
+namespace yii2rails\domain\traits\repository;
 
 use Closure;
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii2lab\extension\common\helpers\PhpHelper;
+use yii2rails\extension\common\helpers\PhpHelper;
 
 trait CacheTrait {
 	

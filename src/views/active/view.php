@@ -1,9 +1,9 @@
 <?php
 
 /* @var $this yii\web\View
- * @var $entity yii2lab\domain\BaseEntity
+ * @var $entity yii2rails\domain\BaseEntity
  */
-use yii2lab\extension\yii\helpers\Html;
+use yii2rails\extension\yii\helpers\Html;
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\exceptions;
+namespace yii2rails\domain\exceptions;
 
 use yii\base\Exception;
 

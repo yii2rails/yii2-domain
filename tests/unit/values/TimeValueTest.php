@@ -3,7 +3,7 @@ namespace tests\unit\values;
 
 use yii2lab\test\Test\Unit;
 use DateTime;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\domain\values\TimeValue;
 
 class TimeValueTest extends Unit
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\data;
+namespace yii2rails\domain\data;
 
 use yii\base\InvalidArgumentException;
-use yii2lab\extension\arrayTools\helpers\Collection;
+use yii2rails\extension\arrayTools\helpers\Collection;
 
 class EntityCollection extends Collection {
 	

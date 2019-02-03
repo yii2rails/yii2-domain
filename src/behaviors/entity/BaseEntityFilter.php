@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\behaviors\entity;
+namespace yii2rails\domain\behaviors\entity;
 
 use yii\base\Behavior;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\enums\EventEnum;
-use yii2lab\domain\events\ReadEvent;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\enums\EventEnum;
+use yii2rails\domain\events\ReadEvent;
 
 abstract class BaseEntityFilter extends Behavior {
 	

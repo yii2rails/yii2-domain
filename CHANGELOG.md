@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Nothing
 
 ### Changed
-- yii2lab\domain\services\base\BaseActiveService::updateById() was changed. This method return entity now
+- yii2rails\domain\services\base\BaseActiveService::updateById() was changed. This method return entity now
 
 ### Removed
 - Nothing

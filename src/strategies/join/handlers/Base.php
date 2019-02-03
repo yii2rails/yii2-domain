@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\strategies\join\handlers;
+namespace yii2rails\domain\strategies\join\handlers;
 
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\dto\WithDto;
-use yii2lab\domain\helpers\DomainHelper;
-use yii2lab\extension\common\helpers\PhpHelper;
+use yii2rails\domain\dto\WithDto;
+use yii2rails\domain\helpers\DomainHelper;
+use yii2rails\extension\common\helpers\PhpHelper;
 
 abstract class Base {
 	

@@ -1,22 +1,22 @@
 <?php
 
-namespace yii2lab\domain\web;
+namespace yii2rails\domain\web;
 
 use Yii;
-use yii2lab\extension\web\helpers\Behavior;
+use yii2rails\extension\web\helpers\Behavior;
 
 class ActiveController extends Controller {
 
-	const RENDER_UPDATE = '@yii2lab/domain/views/active/update';
-	const RENDER_CREATE = '@yii2lab/domain/views/active/create';
-	const RENDER_INDEX = '@yii2lab/domain/views/active/index';
-	const RENDER_VIEW = '@yii2lab/domain/views/active/view';
+	const RENDER_UPDATE = '@yii2rails/domain/views/active/update';
+	const RENDER_CREATE = '@yii2rails/domain/views/active/create';
+	const RENDER_INDEX = '@yii2rails/domain/views/active/index';
+	const RENDER_VIEW = '@yii2rails/domain/views/active/view';
 
-	const ACTION_UPDATE = 'yii2lab\domain\web\actions\UpdateAction';
-	const ACTION_CREATE = 'yii2lab\domain\web\actions\CreateAction';
-	const ACTION_INDEX = 'yii2lab\domain\web\actions\IndexAction';
-	const ACTION_VIEW = 'yii2lab\domain\web\actions\ViewAction';
-	const ACTION_DELETE = 'yii2lab\domain\web\actions\DeleteAction';
+	const ACTION_UPDATE = 'yii2rails\domain\web\actions\UpdateAction';
+	const ACTION_CREATE = 'yii2rails\domain\web\actions\CreateAction';
+	const ACTION_INDEX = 'yii2rails\domain\web\actions\IndexAction';
+	const ACTION_VIEW = 'yii2rails\domain\web\actions\ViewAction';
+	const ACTION_DELETE = 'yii2rails\domain\web\actions\DeleteAction';
 
 	public $formClass;
 	public $titleName = 'title';

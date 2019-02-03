@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\data;
+namespace yii2rails\domain\data;
 
 class GetParams {
 	

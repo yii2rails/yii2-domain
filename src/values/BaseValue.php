@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\values;
+namespace yii2rails\domain\values;
 
 use yii\base\InvalidArgumentException;
-use yii2lab\domain\interfaces\ValueObjectInterface;
+use yii2rails\domain\interfaces\ValueObjectInterface;
 
 class BaseValue implements ValueObjectInterface {
 	

@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2lab\domain\generator;
+namespace yii2rails\domain\generator;
 
 use yii\base\InvalidArgumentException;
-use yii2lab\extension\scenario\base\BaseScenario;
-use yii2lab\extension\code\entities\ClassEntity;
-use yii2lab\extension\code\entities\DocBlockEntity;
-use yii2lab\extension\code\entities\InterfaceEntity;
-use yii2lab\extension\code\helpers\ClassHelper;
-use yii2lab\extension\yii\helpers\ArrayHelper;
+use yii2rails\extension\scenario\base\BaseScenario;
+use yii2rails\extension\code\entities\ClassEntity;
+use yii2rails\extension\code\entities\DocBlockEntity;
+use yii2rails\extension\code\entities\InterfaceEntity;
+use yii2rails\extension\code\helpers\ClassHelper;
+use yii2rails\extension\yii\helpers\ArrayHelper;
 
 abstract class BaseGenerator extends BaseScenario {
 

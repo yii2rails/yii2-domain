@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\behaviors\entity;
+namespace yii2rails\domain\behaviors\entity;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\events\ReadEvent;
-use yii2lab\domain\traits\behavior\AllowOnlyTrait;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\events\ReadEvent;
+use yii2rails\domain\traits\behavior\AllowOnlyTrait;
 
 class EntityFilter extends BaseEntityFilter {
 	

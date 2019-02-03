@@ -24,8 +24,8 @@
 Но более правильным, будет создать класс поведения для модификации запроса:
 
 ```php
-use yii2lab\domain\behaviors\query\BaseQueryFilter;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\behaviors\query\BaseQueryFilter;
+use yii2rails\domain\data\Query;
 
 class StatusBehavior extends BaseQueryFilter {
 
@@ -63,9 +63,9 @@ class CategoryService extends BaseActiveService implements CategoryInterface {
 Создаем поведение:
 
 ```php
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\events\ReadEvent;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\events\ReadEvent;
 
 class SelectAttributeFilter extends BaseEntityFilter {
 	

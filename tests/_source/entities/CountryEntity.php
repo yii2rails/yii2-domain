@@ -2,7 +2,7 @@
 
 namespace tests\_source\entities;
 
-use yii2lab\domain\BaseEntity;
+use yii2rails\domain\BaseEntity;
 
 class CountryEntity extends BaseEntity {
 	

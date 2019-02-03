@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain\events;
+namespace yii2rails\domain\events;
 
 use yii\base\Event;
 

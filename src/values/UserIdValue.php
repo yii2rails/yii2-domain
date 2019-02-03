@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\values;
+namespace yii2rails\domain\values;
 
 use Yii;
-use yii2lab\domain\exceptions\ReadOnlyException;
+use yii2rails\domain\exceptions\ReadOnlyException;
 
 class UserIdValue extends BaseValue {
 	

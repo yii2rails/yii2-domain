@@ -1,26 +1,26 @@
 <?php
 
-namespace yii2lab\domain\repositories;
+namespace yii2rails\domain\repositories;
 
-use yii2lab\domain\Alias;
-use yii2lab\domain\data\ActiveDataProvider;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\Domain;
-use yii2lab\domain\helpers\QueryValidator;
-use yii2lab\domain\helpers\repository\QueryFilter;
-use yii2lab\domain\interfaces\repositories\ReadInterface;
+use yii2rails\domain\Alias;
+use yii2rails\domain\data\ActiveDataProvider;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\Domain;
+use yii2rails\domain\helpers\QueryValidator;
+use yii2rails\domain\helpers\repository\QueryFilter;
+use yii2rails\domain\interfaces\repositories\ReadInterface;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\repositories\relations\BaseSchema;
-use yii2lab\domain\traits\ReadEventTrait;
-use yii2lab\extension\common\helpers\ClassHelper;
+use yii2rails\domain\repositories\relations\BaseSchema;
+use yii2rails\domain\traits\ReadEventTrait;
+use yii2rails\extension\common\helpers\ClassHelper;
 
 /**
  * Class Domain
  *
- * @package yii2lab\domain
+ * @package yii2rails\domain
  *
  * @property Alias $alias
  * @property QueryValidator $queryValidator
@@ -36,11 +36,11 @@ abstract class BaseRepository extends Component {
 	
 	public $id;
 	
-	/** @var \yii2lab\domain\Domain */
+	/** @var \yii2rails\domain\Domain */
 	public $domain;
 	private $alias;
 	
-	/** @var \yii2lab\domain\helpers\QueryValidator */
+	/** @var \yii2rails\domain\helpers\QueryValidator */
 	private $queryValidator;
 	public $driver;
 	protected $primaryKey = 'id';
@@ -164,7 +164,7 @@ abstract class BaseRepository extends Component {
 	 * @param      $data
 	 * @param null $class
 	 *
-	 * @return array|\yii2lab\domain\BaseEntity
+	 * @return array|\yii2rails\domain\BaseEntity
 	 */
 	public function forgeEntity($data, $class = null) {
 		if(empty($data)) {

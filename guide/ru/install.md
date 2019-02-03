@@ -23,8 +23,8 @@ return [
 				'name' => 'domains',
 				'withLocal' => true,
 			],
-			'yii2lab\domain\filters\SetDomainTranslationConfig',
-			'yii2lab\domain\filters\DefineDomainLocator',
+			'yii2rails\domain\filters\SetDomainTranslationConfig',
+			'yii2rails\domain\filters\DefineDomainLocator',
 			...
 		],
 	],

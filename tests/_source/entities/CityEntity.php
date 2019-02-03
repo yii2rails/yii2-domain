@@ -3,9 +3,9 @@
 namespace tests\_source\entities;
 
 use paulzi\jsonBehavior\JsonBehavior;
-use yii2lab\domain\behaviors\query\ReadOnlyBehavior;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\domain\behaviors\query\ReadOnlyBehavior;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\values\TimeValue;
 use tests\_source\entities\CountryEntity;
 use tests\_source\entities\RegionEntity;
 

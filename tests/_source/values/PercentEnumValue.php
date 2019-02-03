@@ -2,7 +2,7 @@
 
 namespace tests\_source\values;
 
-use yii2lab\domain\values\BaseRangeValue;
+use yii2rails\domain\values\BaseRangeValue;
 
 class PercentEnumValue extends BaseRangeValue
 {

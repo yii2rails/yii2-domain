@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\generator;
+namespace yii2rails\domain\generator;
 
 use yii\helpers\Inflector;
-use yii2lab\extension\code\helpers\CodeHelper;
+use yii2rails\extension\code\helpers\CodeHelper;
 
 class MessageGenerator extends BaseGenerator {
 

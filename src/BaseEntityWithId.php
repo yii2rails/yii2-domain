@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2lab\domain;
+namespace yii2rails\domain;
 
 /**
  * Class RestEntity

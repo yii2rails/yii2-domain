@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\filters;
+namespace yii2rails\domain\filters;
 
-use yii2lab\app\domain\filters\config\LoadConfig;
-use yii2lab\domain\helpers\ConfigHelper;
+use yii2rails\app\domain\filters\config\LoadConfig;
+use yii2rails\domain\helpers\ConfigHelper;
 
 class LoadDomainConfig extends LoadConfig {
 	

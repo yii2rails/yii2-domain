@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\factories;
+namespace yii2rails\domain\factories;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\BaseEntity;
+use yii2rails\domain\BaseEntity;
 
 class EntityFactory extends BaseFactory {
 	

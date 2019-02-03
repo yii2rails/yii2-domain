@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\generator;
+namespace yii2rails\domain\generator;
 
-use yii2lab\domain\repositories\relations\BaseSchema;
-use yii2lab\extension\code\entities\ClassEntity;
+use yii2rails\domain\repositories\relations\BaseSchema;
+use yii2rails\extension\code\entities\ClassEntity;
 
 class RepositorySchemaGenerator extends BaseGenerator {
 

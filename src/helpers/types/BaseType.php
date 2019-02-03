@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\helpers\types;
+namespace yii2rails\domain\helpers\types;
 
 use yii\base\InvalidArgumentException;
-use yii2lab\extension\common\helpers\ClassHelper;
+use yii2rails\extension\common\helpers\ClassHelper;
 
 abstract class BaseType {
 	

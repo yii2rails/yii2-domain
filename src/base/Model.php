@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\base;
+namespace yii2rails\domain\base;
 
 use yii\base\Model as YiiModel;
 use yii\helpers\ArrayHelper;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 
 class Model extends YiiModel
 {

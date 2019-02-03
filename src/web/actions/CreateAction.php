@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\web\actions;
+namespace yii2rails\domain\web\actions;
 
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\navigation\domain\widgets\Alert;
 use Yii;
-use yii2lab\domain\base\Action;
+use yii2rails\domain\base\Action;
 
 class CreateAction extends Action {
 	

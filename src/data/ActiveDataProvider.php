@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\data;
+namespace yii2rails\domain\data;
 
 use yii\data\BaseDataProvider;
 use yii\data\Pagination;
 use yii\db\ActiveQueryInterface;
-use yii2lab\domain\interfaces\services\CrudInterface;
+use yii2rails\domain\interfaces\services\CrudInterface;
 
 class ActiveDataProvider extends BaseDataProvider {
 	

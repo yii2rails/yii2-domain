@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\behaviors\entity;
+namespace yii2rails\domain\behaviors\entity;
 
 use yii\web\ForbiddenHttpException;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\enums\ActiveMethodEnum;
-use yii2lab\domain\events\ReadEvent;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\enums\ActiveMethodEnum;
+use yii2rails\domain\events\ReadEvent;
 
 class CheckOwnerIdFilter extends BaseEntityFilter {
 	

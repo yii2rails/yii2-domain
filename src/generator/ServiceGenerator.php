@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2lab\domain\generator;
+namespace yii2rails\domain\generator;
 
-use yii2lab\domain\services\base\BaseActiveService;
-use yii2lab\extension\code\entities\ClassEntity;
+use yii2rails\domain\services\base\BaseActiveService;
+use yii2rails\extension\code\entities\ClassEntity;
 
 class ServiceGenerator extends BaseGenerator {
 

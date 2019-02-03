@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2lab\domain\behaviors\query;
+namespace yii2rails\domain\behaviors\query;
 
 use Yii;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii2lab\db\domain\enums\DbDriverEnum;
 use yii2lab\db\domain\helpers\ConnectionHelper;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 
 class NullsLastOrderFilter extends BaseQueryFilter {
 	

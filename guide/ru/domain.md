@@ -74,7 +74,7 @@ domain - домен, содержащий в себе сервисы, храни
 
 ```php
 'qr' => [
-	'class' => 'yii2lab\domain\Domain',
+	'class' => 'yii2rails\domain\Domain',
 	'path' => 'yii2lab\qr\domain',
 	'container' => [
 		'yii2lab\qr\domain\entities\QrCacheEntity' => 'yii2lab\qr\domain\entities\QrEntity',

@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2lab\domain\helpers\factory;
+namespace yii2rails\domain\helpers\factory;
 
-use yii2lab\domain\Domain;
+use yii2rails\domain\Domain;
 
 class RepositoryFactoryHelper extends BaseFactoryHelper {
 	

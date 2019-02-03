@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\traits;
+namespace yii2rails\domain\traits;
 
-use yii2lab\domain\enums\EventEnum;
-use yii2lab\domain\events\MethodEvent;
-use yii2lab\extension\common\helpers\ClassHelper;
+use yii2rails\domain\enums\EventEnum;
+use yii2rails\domain\events\MethodEvent;
+use yii2rails\extension\common\helpers\ClassHelper;
 
 trait MethodEventTrait {
 	

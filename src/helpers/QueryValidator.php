@@ -1,17 +1,17 @@
 <?php
 
-namespace yii2lab\domain\helpers;
+namespace yii2rails\domain\helpers;
 
 use Yii;
 use yii\db\Expression;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 use yii\base\BaseObject;
 use yii\web\BadRequestHttpException;
-use yii2lab\domain\exceptions\BadQueryHttpException;
+use yii2rails\domain\exceptions\BadQueryHttpException;
 
 class QueryValidator extends BaseObject {
 	
-	/** @var \yii2lab\domain\repositories\BaseRepository */
+	/** @var \yii2rails\domain\repositories\BaseRepository */
 	public $repository;
 	
 	public function validateSortFields(Query $query) {

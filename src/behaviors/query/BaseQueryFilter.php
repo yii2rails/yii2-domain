@@ -1,12 +1,12 @@
 <?php
 
-namespace yii2lab\domain\behaviors\query;
+namespace yii2rails\domain\behaviors\query;
 
 use yii\base\Behavior;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\enums\EventEnum;
-use yii2lab\domain\events\QueryEvent;
-use yii2lab\domain\traits\behavior\CallbackTrait;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\enums\EventEnum;
+use yii2rails\domain\events\QueryEvent;
+use yii2rails\domain\traits\behavior\CallbackTrait;
 
 abstract class BaseQueryFilter extends Behavior {
 	

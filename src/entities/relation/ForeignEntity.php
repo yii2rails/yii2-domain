@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2lab\domain\entities\relation;
+namespace yii2rails\domain\entities\relation;
 
 /**
  * Class ForeignEntity
  *
- * @package yii2lab\domain\entities\relation
+ * @package yii2rails\domain\entities\relation
  *
  * @property $field
  * @property $value

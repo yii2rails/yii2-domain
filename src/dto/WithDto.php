@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2lab\domain\dto;
+namespace yii2rails\domain\dto;
 
-use yii2lab\domain\base\BaseDto;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\entities\relation\RelationEntity;
+use yii2rails\domain\base\BaseDto;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\entities\relation\RelationEntity;
 
 class WithDto extends BaseDto {
 	
