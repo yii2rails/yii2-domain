@@ -13,7 +13,9 @@
 	"autoload": {
 		"psr-4": {
 			"yii2lab\\domain\\": "src",
-			"yii2lab\\domain\\tests\\": "tests"
+			"yii2lab\\domain\\tests\\": "tests",
+			"yii2rails\\domain\\": "src",
+			"yii2rails\\domain\\tests\\": "tests"
 		}
 	},
 	"require": {
