@@ -19,8 +19,6 @@
 		}
 	},
 	"require": {
-		"yiisoft/yii2": "*",
-		"yii2tech/filedb": "*",
 		"php": ">=5.3.0"
 	}
 }
