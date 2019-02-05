@@ -41,7 +41,22 @@ class Helper {
 		}*/
 		return $result;
 	}
-	
+
+    public static function forgeLabels($attributes, $group, $labels = []) {
+        foreach ($attributes as $attribute) {
+            $labels[$attribute] = Yii::t($group, $attribute);
+        }
+        return $labels;
+    }
+
+    public static function forgeForm(Model $model) {
+        $body = \Yii::$app->request->post($model->formName());
+        $model->setAttributes($body, false);
+        /*if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }*/
+    }
+
 	public static function createForm($form, $data = null, $scenario = null) : Model {
 		if(is_string($form) || is_array($form)) {
 			$form = Yii::createObject($form);
