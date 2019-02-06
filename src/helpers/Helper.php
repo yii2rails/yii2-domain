@@ -49,9 +49,14 @@ class Helper {
         return $labels;
     }
 
-    public static function forgeForm(Model $model) {
-        $body = \Yii::$app->request->post($model->formName());
-        $model->setAttributes($body, false);
+    public static function forgeForm(Model $model, $data = null) {
+		if(empty($data)) {
+			$data = \Yii::$app->request->post($model->formName());
+		}
+	    if(empty($data)) {
+			return;
+	    }
+        $model->setAttributes($data, false);
         /*if(!$model->validate()) {
             throw new UnprocessableEntityHttpException($model);
         }*/

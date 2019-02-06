@@ -2,7 +2,6 @@
 
 namespace yii2rails\domain\exceptions;
 
-
 use yii\base\InvalidArgumentException;
 use yii2rails\domain\helpers\ErrorCollection;
 use Exception;
@@ -26,6 +25,10 @@ class UnprocessableEntityHttpException extends HttpException {
 	
 	public function getErrors() {
 		return $this->errors;
+	}
+	
+	public function getErrorsForModel() {
+		return UnProcessibleHelper::indexed2assoc($this->errors);
 	}
 	
 	private function setErrors($errors) {
