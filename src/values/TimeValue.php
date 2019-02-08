@@ -3,6 +3,7 @@
 namespace yii2rails\domain\values;
 
 use DateTime;
+use yii2rails\extension\web\enums\HttpHeaderEnum;
 
 class TimeValue extends BaseValue {
 	
@@ -42,7 +43,12 @@ class TimeValue extends BaseValue {
 	}
 	
 	public function getInFormat($mask = self::TIMESTAMP) {
-		$dateTime = $this->get();
+        /** @var DateTime $dateTime */
+        $dateTime = $this->get();
+        $timeZone = \Yii::$app->request->getHeaders()->get(HttpHeaderEnum::TIME_ZONE);
+        if($timeZone) {
+            $dateTime->setTimezone(new \DateTimeZone($timeZone));
+        }
 		if($mask == self::TIMESTAMP) {
 			$value = $dateTime->getTimestamp();
 		} else {
