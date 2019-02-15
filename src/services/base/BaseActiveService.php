@@ -8,7 +8,6 @@ use yii2rails\domain\data\Query;
 use yii2rails\domain\enums\ActiveMethodEnum;
 use yii2rails\domain\helpers\ErrorCollection;
 use yii2rails\domain\interfaces\repositories\ReadExistsInterface;
-use yii2rails\domain\interfaces\repositories\SearchInterface;
 use yii2rails\domain\interfaces\services\CrudInterface;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii\base\ActionEvent;
@@ -25,7 +24,7 @@ use yii2rails\extension\common\exceptions\DeprecatedException;
  *
  * @package yii2rails\domain\services
  *
- * @property-read \yii2rails\domain\interfaces\repositories\CrudInterface|SearchInterface|ReadExistsInterface $repository
+ * @property-read \yii2rails\domain\interfaces\repositories\CrudInterface|ReadExistsInterface $repository
  */
 class BaseActiveService extends BaseService implements CrudInterface {
 	
@@ -34,24 +33,13 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	const EVENT_VIEW = 'view';
 	const EVENT_UPDATE = 'update';
 	const EVENT_DELETE = 'delete';
-	
-	/** @var \yii2rails\domain\BaseEntity */
-	public $foreignServices;
-	public $forbiddenChangeFields;
-	
+
 	public function sort() {
 		return [];
 	}
 	
 	public function getDataProvider(Query $query = null) {
 		$query = $this->prepareQuery($query, ActiveMethodEnum::READ_ALL);
-		$searchText = SearchHelper::extractSearchTextFromQuery($query);
-		if(!empty($searchText)) {
-			if(! $this->repository instanceof SearchInterface) {
-				throw new ServerErrorHttpException(static::class . ' not implement "SearchInterface" functional');
-			}
-			$dataProvider = $this->repository->searchByText($searchText, $query);
-		}
 		//if($this->repository instanceof ReadPaginationInterface) {
 		if(method_exists($this->repository, 'getDataProvider')) {
 			$dataProvider = $this->repository->getDataProvider($query);
@@ -132,8 +120,6 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	public function create($data) {
 		$this->beforeAction(self::EVENT_CREATE);
 		$data = ArrayHelper::toArray($data);
-		$this->validateForeign($data);
-		$this->validateForbiddenChangeFields($data);
 		/** @var \yii2rails\domain\BaseEntity $entity */
 		$entity = $this->domain->factory->entity->create($this->id, $data);
 		
@@ -146,8 +132,6 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	public function update(BaseEntity $entity) {
 		$this->beforeAction(self::EVENT_UPDATE);
 		$data = ArrayHelper::toArray($entity);
-		$this->validateForeign($data);
-		$this->validateForbiddenChangeFields($data);
 		$entity->validate();
 		$this->repository->update($entity);
 		return $this->afterAction(self::EVENT_UPDATE);
@@ -156,8 +140,6 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	public function updateById($id, $data) {
 		$this->beforeAction(self::EVENT_UPDATE);
 		$data = ArrayHelper::toArray($data);
-		$this->validateForeign($data);
-		$this->validateForbiddenChangeFields($data);
 		$entity = $this->oneById($id);
 		$entity->load($data);
 		$entity->validate();
@@ -170,55 +152,6 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		$entity = $this->oneById($id);
 		$this->repository->delete($entity);
 		return $this->afterAction(self::EVENT_DELETE);
-	}
-	
-	protected function ensureForeignConfig($config) {
-		foreach($config as $service => &$serviceConfig) {
-			if(empty($serviceConfig['field'])) {
-				throw new InvalidConfigException('The "foreignServices.field" property must be set.');
-			}
-			if(empty($serviceConfig['notFoundMessage'])) {
-				$serviceConfig['notFoundMessage'] = ['domain/service', 'foreign_entity_not_found'];
-			}
-		}
-		return $config;
-	}
-	
-	protected function validateForbiddenChangeFields($data) {
-		if(empty($this->forbiddenChangeFields)) {
-			return;
-		}
-		foreach($this->forbiddenChangeFields as $fieldName) {
-			if(!empty($data[ $fieldName ])) {
-				$error = new ErrorCollection();
-				$error->add($fieldName, 'domain/service', 'forbidden_change_field {field}', ['field' => $fieldName]);
-				throw new UnprocessableEntityHttpException($error);
-			}
-		}
-	}
-	
-	protected function validateForeign($data) {
-		if(empty($this->foreignServices)) {
-			return;
-		}
-		$config = $this->ensureForeignConfig($this->foreignServices);
-		foreach($config as $serviceKey => $serviceConfig) {
-			$fieldName = $serviceConfig['field'];
-			if(!empty($serviceConfig['isChild'])) {
-				continue;
-			}
-			if(!empty($data[ $fieldName ])) {
-				try {
-					$serviceInstance = ArrayHelper::getValue(\App::$domain, $serviceKey);
-					$serviceInstance->oneById($data[ $fieldName ]);
-				} catch(NotFoundHttpException $e) {
-					$notFoundMessage = $serviceConfig['notFoundMessage'];
-					$error = new ErrorCollection();
-					$error->add($fieldName, $notFoundMessage[0], $notFoundMessage[1]);
-					throw new UnprocessableEntityHttpException($error);
-				}
-			}
-		}
 	}
 
 	protected function beforeAction($action) {
@@ -236,7 +169,7 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		return $event->result;
 	}
 
-	private function checkAccess($action, $accessList = null, $param = null) {
+	/*private function checkAccess($action, $accessList = null, $param = null) {
 		if(!$accessList) {
 			return true;
 		}
@@ -252,6 +185,6 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		if($isIntersectAction) {
 			\App::$domain->rbac->manager->can($access['roles'], $param);
 		}
-	}
+	}*/
 
 }

@@ -11,9 +11,5 @@ class BaseSchema {
 	public function uniqueFields() {
 		return [];
 	}
-	
-	public function searchByTextFields() {
-		return [];
-	}
-	
+
 }
