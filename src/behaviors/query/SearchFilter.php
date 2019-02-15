@@ -10,6 +10,9 @@ use yii2rails\domain\enums\EventEnum;
 use yii2rails\domain\events\QueryEvent;
 use yii2rails\domain\repositories\BaseRepository;
 use yii2rails\domain\traits\behavior\CallbackTrait;
+use yii2rails\extension\common\enums\LogicOperatorEnum;
+use yii2rails\extension\common\helpers\StringHelper;
+use yii2rails\extension\yii\helpers\ArrayHelper;
 
 class SearchFilter extends Behavior {
 
@@ -18,6 +21,7 @@ class SearchFilter extends Behavior {
     public $searchParamName = 'search';
     public $minLength = 3;
     public $fields = [];
+    public $concatenator = LogicOperatorEnum::OR;
 
     public function events() {
         return [
@@ -43,13 +47,31 @@ class SearchFilter extends Behavior {
 
     private function generateLikeCondition($search, BaseRepository $repository) {
         $q = Query::forge();
-        foreach($search as $key => $value) {
-            $this->validateSearchText($value, $key);
-            $key = $repository->alias->encode($key);
-            $exp = new Expression('lower(' . $key . ') like \'%' . mb_strtolower($value). '%\'');
-            $q->orWhere($exp);
+        $concatenator = ArrayHelper::getValue($search, 'concatenator');
+        unset($search['concatenator']);
+        if(empty($concatenator)) {
+            $concatenator = $this->concatenator;
         }
-        return $q->getParam(Query::WHERE);
+        $condition = [$concatenator];
+        foreach($search as $attrKey => $attrValue) {
+            $attrValue = trim($attrValue);
+            $attrValue = StringHelper::removeDoubleSpace($attrValue);
+            $condition[] = $this->generateLikeConditionItem($attrKey, $attrValue, $repository);
+        }
+        return $condition;
+    }
+
+    private function generateLikeConditionItem($attrKey, $attrValue, BaseRepository $repository) {
+        $condition = [
+            'or',
+        ];
+        $values = explode(SPC, $attrValue);
+        foreach ($values as $value) {
+            //$this->validateSearchText($attrValue, $attrKey);
+            $attrKey = $repository->alias->encode($attrKey);
+            $condition[] = new Expression('lower(' . $attrKey . ') like \'%' . mb_strtolower($value). '%\'');
+        }
+        return $condition;
     }
 
     private function validateSearchText($text, $attribute) {
