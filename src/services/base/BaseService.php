@@ -35,11 +35,7 @@ class BaseService extends YiiComponent {
 	
 	/** @var Domain */
 	public $domain;
-	
-	public function access() {
-		return [];
-	}
-	
+
 	public function getRepository($name = null) {
 		$name = !empty($name) ? $name : $this->id;
 		return $this->domain->repositories->{$name};
