@@ -21,14 +21,6 @@ class ActiveController extends Controller {
 	public $formClass;
 	public $titleName = 'title';
 
-	public function behaviors() {
-		$behaviors = [];
-		foreach($this->service->access() as $access) {
-			$behaviors[] = Behavior::access($access['roles'], $access['only']);
-		}
-		return $behaviors;
-	}
-	
 	public function actions() {
 		return [
 			'update' => [
