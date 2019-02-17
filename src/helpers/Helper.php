@@ -90,15 +90,15 @@ class Helper {
 	}
 	
 	
-	public static function toArray($value) {
+	public static function toArray($value, $recursive = true) {
 		if(is_object($value) && method_exists($value, 'toArray')) {
-			return $value->toArray();
+			return $value->toArray([],[], $recursive);
 		}
 		if(!ArrayHelper::isIndexed($value)) {
 			return $value;
 		}
 		foreach($value as &$item) {
-			$item = self::toArray($item);
+			$item = self::toArray($item, $recursive);
 		}
 		return $value;
 	}

@@ -87,8 +87,12 @@ class BaseEntity extends Component implements Arrayable {
 		$fields = $this->addExtraFields($fields, $expand);
 		$result = [];
 		foreach($fields as $name) {
-			$value = $this->getAttribute($name, $isRaw);
-			$result[ $name ] = Helper::toArray($value);
+            $value = $this->getAttribute($name, $isRaw);
+			if($recursive) {
+                $result[ $name ] = Helper::toArray($value, $recursive);
+            } else {
+                $result[ $name ] = $value;
+            }
 		}
 		return $result;
 	}
