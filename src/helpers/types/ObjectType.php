@@ -46,8 +46,7 @@ class ObjectType extends BaseType {
 		if(is_subclass_of($class, BaseEntity::class)) {
 			$isCollection = !empty($config['isCollection']);
 			if($isCollection) {
-			    // return new EntityCollection($class, $value);
-				return ArrayHelper::toArray($value, [],false);
+			    return new EntityCollection($class, $value);
 			} else {
 				return Helper::forgeEntity($value, $class);
 			}
