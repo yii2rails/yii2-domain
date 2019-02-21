@@ -21,6 +21,7 @@ class SearchFilter extends Behavior {
     public $searchParamName = 'search';
     public $minLength = 3;
     public $fields = [];
+    public $virtualFields = [];
     public $concatenator = LogicOperatorEnum::OR;
 
     public function events() {
@@ -56,7 +57,13 @@ class SearchFilter extends Behavior {
         foreach($search as $attrKey => $attrValue) {
             $attrValue = trim($attrValue);
             $attrValue = StringHelper::removeDoubleSpace($attrValue);
-            $condition[] = $this->generateLikeConditionItem($attrKey, $attrValue, $repository);
+            if(array_key_exists($attrKey, $this->virtualFields)) {
+                foreach ($this->virtualFields[$attrKey] as $virtualFieldKey) {
+                    $condition[] = $this->generateLikeConditionItem($virtualFieldKey, $attrValue, $repository);
+                }
+            } else {
+                $condition[] = $this->generateLikeConditionItem($attrKey, $attrValue, $repository);
+            }
         }
         return $condition;
     }
@@ -79,11 +86,11 @@ class SearchFilter extends Behavior {
         if(!in_array($attribute, $this->fields)) {
             throw new BadRequestHttpException('Attribute "' . $attribute . '" not for serach!');
         }
-        if(empty($text) || mb_strlen($text) < $this->minLength) {
+        /*if(empty($text) || mb_strlen($text) < $this->minLength) {
             throw new BadRequestHttpException(\Yii::t('yii', '{attribute} should contain at least {min, number} {min, plural, one{character} other{characters}}.', [
                 'attribute' => $attribute,
                 'min' => $this->minLength,
             ]));
-        }
+        }*/
     }
 }
