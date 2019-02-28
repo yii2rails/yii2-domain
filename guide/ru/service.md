@@ -102,19 +102,4 @@ return $this->afterAction(self::EVENT_VIEW, $result);
 
 Например, через событие производится обработка прав доступа.
 
-## Права доступа
 
-Вы можете устанавливать права доступа на методы чтения и изменения.
-Для этого объявляем правила:
-
-```php
-class CityService extends ActiveBaseService {
-	
-	public function access() {
-    	return [
-    		['geo.city.manage', ['create', 'update', 'delete']],
-    		['geo.city.delete', ['delete']],
-    	];
-    }
-}
-```
