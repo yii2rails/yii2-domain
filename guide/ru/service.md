@@ -39,7 +39,7 @@
 Пример обращения к методу сервиса:
 
 ```php
-Yii::$app->account->auth->logout();
+App::$domain->account->auth->logout();
 ```
 
 Где 

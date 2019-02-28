@@ -31,7 +31,7 @@ $query->limit(20);
 $query->offset(40);
 $query->orderBy([ 'name' => SORT_ASC]);
 $query->with('country');
-$all = Yii::$app->geo->repository->city->all($query);
+$all = App::$domain->geo->repository->city->all($query);
 ```
 
 ## Набор полей

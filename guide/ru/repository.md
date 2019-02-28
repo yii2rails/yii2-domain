@@ -27,7 +27,7 @@
 Пример обращения к методу хранилища:
 
 ```php
-Yii::$app->account->repositories->auth->logout();
+App::$domain->account->repositories->auth->logout();
 ```
 
 Где:
@@ -280,7 +280,7 @@ class CategoriesRepository extends ActiveArRepository {
 $query = Query::forge();
 $query->with('country');
 $query->with('region');
-$cityEntity = Yii::$app->geo->city->oneById(2000, $query);
+$cityEntity = App::$domain->geo->city->oneById(2000, $query);
 ```
 
 получаем:
@@ -318,7 +318,7 @@ $cityEntity = Yii::$app->geo->city->oneById(2000, $query);
 $query = Query::forge();
 $query->with('country.currency');
 $query->with('region');
-$cityEntity = Yii::$app->geo->city->oneById(2000, $query);
+$cityEntity = App::$domain->geo->city->oneById(2000, $query);
 ```
 
 на этот запрос получаем такой ответ:

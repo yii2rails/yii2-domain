@@ -102,13 +102,13 @@ Yii::$container->set('yii2lab\qr\domain\entities\QrCacheEntity', 'yii2lab\qr\dom
 Обратиться к объекту домена:
 
 ```php
-Yii::$app->geo;
+App::$domain->geo;
 ```
 
 Обратиться к объекту сервиса:
 
 ```php
-Yii::$app->geo->city;
+App::$domain->geo->city;
 ```
 
 Вызвать метод сервиса:

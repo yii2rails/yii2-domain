@@ -80,7 +80,7 @@ class LoginEntity extends BaseEntity implements IdentityInterface {
 Создание сущности из любой точки приложения:
 
 ```php
-$entity = Yii::$app->account->factory->entity->create('login', $data);
+$entity = App::$domain->account->factory->entity->create('login', $data);
 ```
 
 Создание сущности в любом классе домена:
@@ -227,7 +227,7 @@ class ServiceEntity extends BaseEntity {
 			return null;
 		}
 		/** todo: make mock for summary */
-		return Yii::$app->summary->summary->url['service_pictures'] . '/' . $this->getPicture();
+		return App::$domain->summary->summary->url['service_pictures'] . '/' . $this->getPicture();
 	}
 
 	public function fields() {
