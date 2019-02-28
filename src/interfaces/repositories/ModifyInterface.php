@@ -25,5 +25,7 @@ interface ModifyInterface extends RepositoryInterface {
 	 *
 	 */
 	public function delete(BaseEntity $entity);
-	
+
+    public function truncate();
+
 }
