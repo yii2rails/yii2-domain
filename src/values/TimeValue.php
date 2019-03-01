@@ -4,6 +4,7 @@ namespace yii2rails\domain\values;
 
 use DateTime;
 use yii2rails\extension\web\enums\HttpHeaderEnum;
+use yubundle\account\domain\v2\entities\LoginEntity;
 
 class TimeValue extends BaseValue {
 	
@@ -28,6 +29,9 @@ class TimeValue extends BaseValue {
 	public function setDate($year = 0, $month = 0, $day = 0) {
 		/** @var DateTime $dateTime */
 		$dateTime = $this->get();
+		if($dateTime == null) {
+            $dateTime = new DateTime;
+        }
 		$dateTime->setDate($year, $month, $day);
 		$this->set($dateTime);
 	}
@@ -39,12 +43,15 @@ class TimeValue extends BaseValue {
 	}
 	
 	public function setNow() {
-		$this->setFromFormat(TIMESTAMP, TimeValue::TIMESTAMP);
+		$this->set(time());
 	}
 	
 	public function getInFormat($mask = self::TIMESTAMP) {
         /** @var DateTime $dateTime */
         $dateTime = $this->get();
+        if($dateTime == null) {
+            return null;
+        }
         $timeZone = \Yii::$app->request->getHeaders()->get(HttpHeaderEnum::TIME_ZONE);
         if($timeZone) {
             $dateTime->setTimezone(new \DateTimeZone($timeZone));
@@ -58,26 +65,28 @@ class TimeValue extends BaseValue {
 	}
 	
 	protected function _encode($value) {
+	    if(empty($value)) {
+            return null;
+        }
+	    //prr($value);
 		/** @var DateTime $dateTime */
 		if($value instanceof DateTime) {
 			$dateTime = $value;
-		} else {
-			$dateTime = new DateTime();
-		}
-		if(is_integer($value)) {
+        } elseif(is_integer($value)) {
+            $dateTime = new DateTime();
 			$dateTime->setTimestamp($value);
-		}
-		if(is_array($value)) {
+		} elseif(is_array($value)) {
+            $dateTime = new DateTime();
 			$dateTime->setDate($value[0], $value[1], $value[2]);
 			$dateTime->setTime($value[3], $value[4], $value[5]);
-		}
-		if(is_string($value)) {
+		} elseif(is_string($value)) {
 			$dateTime = new DateTime($value);
 		}
 		return $dateTime;
 	}
 	
 	public function getDefault() {
+	    return null;
 		return $this->_encode(TIMESTAMP);
 	}
 	
@@ -87,6 +96,9 @@ class TimeValue extends BaseValue {
 		} catch(\Exception $e) {
 			return false;
 		}
+		if($dateTime == null) {
+            return true;
+        }
 		return !empty($dateTime->getTimestamp());
 	}
 }
