@@ -25,7 +25,8 @@ class TimeValueFilter extends Behavior {
         $entity = $event->sender;
         foreach ($this->attributes as $attribute) {
             if($entity->hasProperty($attribute) && $entity->{$attribute} == null) {
-                $entity->{$attribute} = time();
+                $timeValue = new TimeValue(time());
+                $entity->{$attribute} = $timeValue;
             }
         }
     }
