@@ -3,6 +3,7 @@
 namespace yii2rails\domain\data;
 
 use Yii;
+use yii\base\Arrayable;
 use yii\db\Expression;
 use yii2lab\db\domain\helpers\TableHelper;
 use yii2rails\domain\data\query\Rest;
@@ -17,7 +18,7 @@ use yii2mod\helpers\ArrayHelper;
  *
  * @property Rest $rest
  */
-class Query extends Component {
+class Query extends Component implements Arrayable {
 	
 	const WHERE = 'where';
 	const SELECT = 'select';
@@ -289,8 +290,12 @@ class Query extends Component {
 		}
 		return $this;
 	}
-	
-	public function toArray() {
+
+    public function fields() {}
+
+    public function extraFields() {}
+
+	public function toArray(array $fields = [], array $expand = [], $recursive = true) {
 		return $this->query;
 	}
 	
