@@ -14,6 +14,6 @@ class DeleteAction extends Action {
 		$method = $this->serviceMethod;
 		$this->service->$method($id);
 		\App::$domain->navigation->alert->create(['main', 'delete_success'], Alert::TYPE_SUCCESS);
-		return $this->redirect($this->baseUrl);
+		return $this->redirect(rtrim($this->baseUrl, SL));
 	}
 }

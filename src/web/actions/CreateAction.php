@@ -18,7 +18,7 @@ class CreateAction extends Action {
 			try{
 				$this->runServiceMethod($model->toArray());
 				\App::$domain->navigation->alert->create(['main', 'create_success'], Alert::TYPE_SUCCESS);
-				return $this->redirect($this->baseUrl);
+				return $this->redirect(rtrim($this->baseUrl, SL));
 			} catch (UnprocessableEntityHttpException $e){
 				$model->addErrorsFromException($e);
 			}
