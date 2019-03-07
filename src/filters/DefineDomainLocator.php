@@ -17,14 +17,8 @@ class DefineDomainLocator extends BaseScenario
 	
 	public function run()
 	{
-		/*$config = $this->getData();
-		$domains = $config['params']['domains'];
-		unset($config['params']['domains']);*/
 		$domains = $this->loadConfig();
-		//prr($domains,1,1);
 		$this->createDomainLocator($domains);
-		//$config = DomainLangHelper::setDomainTranslationConfig($config, $domains);
-		//$this->setData($config);
 	}
 	
 	private function loadConfig()
@@ -42,11 +36,6 @@ class DefineDomainLocator extends BaseScenario
 	private function createDomainLocator($domains)
 	{
 		$domain = new BaseDomainLocator;
-		/*if(class_exists(DomainLocator::class)) {
-			$domain = new DomainLocator;
-		} else {
-			$domain = new BaseDomainLocator;
-		}*/
         $domain->setComponents($domains);
         App::$domain = $domain;
 	}
