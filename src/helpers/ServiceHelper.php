@@ -44,7 +44,15 @@ class ServiceHelper {
 	
 	public static function has($serviceName) {
 		try {
-			$serviceInstance = ArrayHelper::getValue(\App::$domain, $serviceName);
+		    list($domainId, $serviceId) = explode(DOT, $serviceName);
+		    if(!\App::$domain->has($domainId)) {
+                return false;
+            }
+            if(!\App::$domain->{$domainId}->has($serviceId)) {
+                return false;
+            }
+            return true;
+			//$serviceInstance = ArrayHelper::has(\App::$domain, $serviceName);
 			return is_object($serviceInstance);
 		} catch(UnknownPropertyException $e) {
 			return false;
