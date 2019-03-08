@@ -43,6 +43,7 @@ Domain Driven Design
 
 ## Исключения
 
+* [Domain locator not defined](exception-domain-locator-not-defined.md)
 * [Domain not defined](exception-domain-not-defined.md)
 * [Service not defined](exception-service-not-defined.md)
 * [Repository not defined](exception-repository-not-defined.md)

@@ -2,6 +2,7 @@
 
 namespace yii2rails\domain\locators;
 
+use yii\base\InvalidConfigException;
 use yii\base\UnknownPropertyException;
 use yii2rails\domain\Domain;
 use yii2rails\domain\repositories\BaseRepository;
@@ -22,10 +23,9 @@ class RepositoryLocator extends \yii\di\ServiceLocator {
             return parent::__get($name);
         } catch (UnknownPropertyException $e) {
             $message =
-                'Repository "' . $name . '" not defined! ' .
-                'You can configure this service in domain config. ' .
+                'Repository "' . $name . '" not defined! ' . PHP_EOL .
                 'Guide - https://github.com/yii2rails/yii2-domain/blob/master/guide/ru/exception-repository-not-defined.md';
-            throw new UnknownPropertyException($message, 0, $e);
+            throw new InvalidConfigException($message, 0, $e);
         }
     }
 }
