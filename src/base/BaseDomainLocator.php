@@ -2,6 +2,7 @@
 
 namespace yii2rails\domain\base;
 
+use yii\base\UnknownPropertyException;
 use yii2rails\domain\Domain;
 use yii\di\ServiceLocator;
 
@@ -31,5 +32,18 @@ use yii\di\ServiceLocator;
  *
  */
 class BaseDomainLocator extends ServiceLocator {
+
+    public function __get($name)
+    {
+        try {
+            return parent::__get($name);
+        } catch (UnknownPropertyException $e) {
+            $message =
+                'Domain "' . $name . '" not defined! ' .
+                'You can configure this domain. ' .
+                'Guide - https://github.com/yii2rails/yii2-domain/blob/master/guide/ru/exception-domain-not-defined.md';
+            throw new UnknownPropertyException($message, 0, $e);
+        }
+    }
 
 }

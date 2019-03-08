@@ -41,6 +41,12 @@ Domain Driven Design
 * [TPS](repository-driver-tps.md)
 * [WSDL](repository-driver-wsdl.md)
 
+## Исключения
+
+* [Domain not defined](exception-domain-not-defined.md)
+* [Service not defined](exception-service-not-defined.md)
+* [Repository not defined](exception-repository-not-defined.md)
+
 ## Прочее
 
 * [Исключения (Exception)](exception.md)
