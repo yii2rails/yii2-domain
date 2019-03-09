@@ -25,7 +25,8 @@ class ServiceHelper {
 			\App::$domain->{$domain}->{$service};
 			return true;
 		} catch(UnknownPropertyException $e) {
-		}
+		} catch(InvalidConfigException $e) {
+        }
 		return false;
 	}
 	
