@@ -77,7 +77,8 @@ trait ReadOneTrait {
 		$query->limit(1);
 		$collection = $this->all($query);
 		if(empty($collection)) {
-			throw new NotFoundHttpException(get_called_class());
+		    $message = json_encode($query->getParam(Query::WHERE));
+			throw new NotFoundHttpException(get_called_class() . PHP_EOL . ' Where: ' . $message);
 		}
 		$entity = ArrayHelper::first($collection);
 		return $entity;
