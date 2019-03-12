@@ -116,7 +116,14 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		$result = $this->afterReadTrigger($result, $query);
 		return $this->afterAction(self::EVENT_INDEX, $result);
 	}
-	
+
+    public function createEntity(BaseEntity $entity) {
+        $this->beforeAction(self::EVENT_CREATE);
+        $entity->validate();
+        $entity = $this->repository->insert($entity);
+        return $this->afterAction(self::EVENT_CREATE, $entity);
+    }
+
 	public function create($data) {
 		$this->beforeAction(self::EVENT_CREATE);
 		$data = ArrayHelper::toArray($data);
