@@ -12,6 +12,7 @@ use yii\di\ServiceLocator;
  * @property-read \yii2rails\app\domain\Domain $app
  * @property-read \yii2rails\extension\jwt\Domain $jwt
  * @property-read \yii2rails\extension\package\domain\Domain $package
+ * @property-read \yii2rails\extension\changelog\Domain $changelog
  * @property-read \yii2lab\geo\domain\Domain $geo
  * @property-read \yii2lab\navigation\domain\Domain $navigation
  * @property-read \yii2lab\notify\domain\Domain $notify
