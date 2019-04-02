@@ -3,6 +3,7 @@
 namespace yii2rails\domain\values;
 
 use DateTime;
+use yii2rails\extension\common\helpers\time\TimeHelper;
 use yii2rails\extension\web\enums\HttpHeaderEnum;
 use yubundle\account\domain\v2\entities\LoginEntity;
 
@@ -52,7 +53,7 @@ class TimeValue extends BaseValue {
         if($dateTime == null) {
             return null;
         }
-        $timeZone = \Yii::$app->request->getHeaders()->get(HttpHeaderEnum::TIME_ZONE);
+		$timeZone = TimeHelper::getTimeZone();
         if($timeZone) {
             $dateTime->setTimezone(new \DateTimeZone($timeZone));
         }
