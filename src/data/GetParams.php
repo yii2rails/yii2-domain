@@ -4,8 +4,8 @@ namespace yii2rails\domain\data;
 
 class GetParams {
 	
-	public function getAllParams($params = []) {
-		$query = new Query();
+	public function getAllParams($params = [], Query $query = null) {
+		$query = Query::forge($query);
 		if(empty($params)) {
 			return $query;
 		}

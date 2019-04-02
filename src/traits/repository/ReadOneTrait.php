@@ -71,13 +71,14 @@ trait ReadOneTrait {
 	public function one(Query $query = null) {
 		/** @var Query $query */
 		$query = $this->prepareQuery($query);
-		if(!$query->hasParam('where') || $query->getParam('where') == []) {
+		if(!$query->hasParam('where') /*|| $query->getParam('where') == []*/) {
 			throw new InvalidArgumentException(Yii::t('domain:domain/repository', 'where_connot_be_empty'));
 		};
 		$query->limit(1);
 		$collection = $this->all($query);
 		if(empty($collection)) {
-			throw new NotFoundHttpException(get_called_class());
+		    $message = json_encode($query->getParam(Query::WHERE));
+			throw new NotFoundHttpException(get_called_class() . PHP_EOL . ' Where: ' . $message);
 		}
 		$entity = ArrayHelper::first($collection);
 		return $entity;

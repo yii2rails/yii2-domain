@@ -9,7 +9,9 @@ interface RepositoryInterface {
 
     /**
      * @param Query|null $query
+     *
      * @return DataProviderInterface
+     * @throws InvalidConfigException
      */
 	public function getDataProvider(Query $query = null);
 	public function scenarios();

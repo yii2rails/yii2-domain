@@ -76,7 +76,7 @@ class SearchFilter extends Behavior {
         foreach ($values as $value) {
             //$this->validateSearchText($attrValue, $attrKey);
             $attrKey = $repository->alias->encode($attrKey);
-            $condition[] = new Expression('lower(' . $attrKey . ') like \'%' . mb_strtolower($value). '%\'');
+            $condition[] = new Expression('lower(cast("' . $attrKey . '" as varchar)) like \'%' . mb_strtolower($value). '%\'');
         }
         return $condition;
     }

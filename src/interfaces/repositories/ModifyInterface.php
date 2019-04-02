@@ -19,7 +19,14 @@ interface ModifyInterface extends RepositoryInterface {
 	 * @throws \yii2rails\domain\exceptions\UnprocessableEntityHttpException
 	 */
 	public function update(BaseEntity $entity);
-	
+
+    /**
+     * @param BaseEntity $entity
+     *
+     * @throws \yii2rails\domain\exceptions\UnprocessableEntityHttpException
+     */
+    //public function updateOrInsert(BaseEntity $entity);
+
 	/**
 	 * @param BaseEntity $entity
 	 *
