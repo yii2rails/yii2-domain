@@ -3,6 +3,8 @@
 namespace yii2rails\domain\values;
 
 use DateTime;
+use DateTimeZone;
+use yii\base\InvalidArgumentException;
 use yii2rails\extension\common\helpers\time\TimeHelper;
 use yii2rails\extension\web\enums\HttpHeaderEnum;
 use yubundle\account\domain\v2\entities\LoginEntity;
@@ -45,6 +47,27 @@ class TimeValue extends BaseValue {
 	
 	public function setNow() {
 		$this->set(time());
+	}
+	
+	public function set($value) {
+		$dateTimeZoneUtc = new DateTimeZone('UTC');
+		if(!empty($value)) {
+			if(is_string($value)) {
+				$dateTime = new DateTime($value, $dateTimeZoneUtc);
+			} elseif($value instanceof DateTime) {
+				$dateTime = clone $value;
+				$dateTime->setTimezone($dateTimeZoneUtc);
+			} elseif(is_numeric($value)) {
+				$dateTime = new DateTime;
+				$dateTime->setTimezone($dateTimeZoneUtc);
+				$dateTime->setTimestamp($value);
+			} else {
+				throw new InvalidArgumentException('Unknown time format');
+			}
+			parent::set($dateTime);
+		} else {
+			parent::set(null);
+		}
 	}
 	
 	public function getInFormat($mask = self::TIMESTAMP) {
