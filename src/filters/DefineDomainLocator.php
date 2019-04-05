@@ -4,6 +4,7 @@ namespace yii2rails\domain\filters;
 
 use Yii;
 use App;
+use yii\base\InvalidConfigException;
 use yii2rails\app\domain\helpers\CacheHelper;
 use yii2rails\domain\base\BaseDomainLocator;
 use yii2rails\extension\scenario\base\BaseScenario;
@@ -17,8 +18,9 @@ class DefineDomainLocator extends BaseScenario
 	
 	public function run()
 	{
+		App::$domain = new BaseDomainLocator;
 		$domains = $this->loadConfig();
-		$this->createDomainLocator($domains);
+		App::$domain->setComponents($domains);
 	}
 	
 	private function loadConfig()
@@ -31,13 +33,6 @@ class DefineDomainLocator extends BaseScenario
 		};
 		$config = CacheHelper::forge(APP . '_domain_config', $callback);
 		return $config;
-	}
-	
-	private function createDomainLocator($domains)
-	{
-		$domain = new BaseDomainLocator;
-        $domain->setComponents($domains);
-        App::$domain = $domain;
 	}
 	
 }
