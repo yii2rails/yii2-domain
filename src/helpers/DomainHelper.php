@@ -18,7 +18,15 @@ class DomainHelper {
 		$domain = Yii::createObject($definition);
 		return $domain;
 	}
-	
+
+    public static function forgeDomains2($config) {
+        foreach($config as $id => $definition) {
+            if(!\App::$domain->has($id)) {
+                self::defineDomain2($id, $definition);
+            }
+        }
+    }
+
 	public static function forgeDomains($config) {
 		foreach($config as $id => $definition) {
 			if(!\App::$domain->has($id)) {
@@ -32,7 +40,18 @@ class DomainHelper {
 			self::defineDomain($id, $definition);
 		}
 	}
-	
+
+    public static function defineDomain2($id, $definition) {
+	    if(is_array($definition)) {
+            $class = $definition['class'];
+            unset($definition['class']);
+            $domainDefinition = DomainHelper::getClassConfig($id, $class, $definition);
+        } else {
+            $domainDefinition = DomainHelper::getClassConfig($id, $definition);
+        }
+        \App::$domain->set($id, $domainDefinition);
+    }
+
 	public static function defineDomain($id, $class) {
 		$domainDefinition = DomainHelper::getClassConfig($id, $class);
 		self::define($id, $domainDefinition);
