@@ -29,7 +29,7 @@ class QueryValidator extends BaseObject {
 		}
 		/** @var Query $query */
 		$fields = $query->getParam('select');
-		if(empty($fields)) {
+		/*if(empty($fields)) {
 			return;
 		}
 		$entityAttributes = $this->repository->selectFields();
@@ -38,7 +38,7 @@ class QueryValidator extends BaseObject {
 			$fieldName = $diff[ key($diff) ];
 			$message = Yii::t('domain/db', 'field_not_exists {field}', ['field' => $fieldName]);
 			throw new BadQueryHttpException($message);
-		}
+		}*/
 	}
 	
 	private function filterFields($data, $type) {
