@@ -52,18 +52,27 @@ class TimeValue extends BaseValue {
 	public function set($value) {
 		$dateTimeZoneUtc = new DateTimeZone('UTC');
 		if(!empty($value)) {
-			if(is_string($value)) {
-				$dateTime = new DateTime($value, $dateTimeZoneUtc);
-			} elseif($value instanceof DateTime) {
-				$dateTime = clone $value;
-				$dateTime->setTimezone($dateTimeZoneUtc);
-			} elseif(is_numeric($value)) {
-				$dateTime = new DateTime;
-				$dateTime->setTimezone($dateTimeZoneUtc);
-				$dateTime->setTimestamp($value);
-			} else {
-				throw new InvalidArgumentException('Unknown time format');
-			}
+			try {
+                if(is_string($value)) {
+                    $dateTime = new DateTime($value, $dateTimeZoneUtc);
+                } elseif(is_array($value)) {
+                    $dateTime = new DateTime();
+                    $dateTime->setDate($value[0], $value[1], $value[2]);
+                    $dateTime->setTime($value[3], $value[4], $value[5]);
+                } elseif($value instanceof DateTime) {
+                    $dateTime = clone $value;
+                    $dateTime->setTimezone($dateTimeZoneUtc);
+                } elseif(is_numeric($value)) {
+                    $dateTime = new DateTime;
+                    $dateTime->setTimezone($dateTimeZoneUtc);
+                    $dateTime->setTimestamp($value);
+                }
+            } catch (\Exception $e) {
+                throw new InvalidArgumentException('Unknown time format');
+            }
+			if(!isset($dateTime)) {
+                throw new InvalidArgumentException('Unknown time format');
+            }
 			parent::set($dateTime);
 		} else {
 			parent::set(null);

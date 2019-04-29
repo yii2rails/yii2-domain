@@ -41,7 +41,7 @@ class BaseEntityBehaviorTest extends Unit {
             $entity->updated_at = 'wertyu';
             $this->tester->assertBad();
         } catch (\yii\base\InvalidArgumentException $e) {
-            $this->tester->assertExceptionMessage('Invalid value in "ValueObject"', $e);
+            $this->tester->assertExceptionMessage('Unknown time format', $e);
         }
     }
 

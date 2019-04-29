@@ -22,7 +22,7 @@ class TimeValueTest extends Unit
 	{
 		$value = $this->buildInstance();
 		$value->set('24 Jun 2012 05:34:56 -0400');
-		$this->tester->assertEquals($value->getInFormat(TimeValue::FORMAT_API), self::DATE_TIME_API);
+		$this->tester->assertEquals($value->getInFormat(TimeValue::FORMAT_API), '2012-06-24T09:34:56Z');
 		
 		$value = $this->buildInstance();
 		$value->set('6/24/2012 5:34:56 AM');
