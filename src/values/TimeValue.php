@@ -7,7 +7,6 @@ use DateTimeZone;
 use yii\base\InvalidArgumentException;
 use yii2rails\extension\common\helpers\time\TimeHelper;
 use yii2rails\extension\web\enums\HttpHeaderEnum;
-use yubundle\account\domain\v2\entities\LoginEntity;
 
 class TimeValue extends BaseValue {
 	
