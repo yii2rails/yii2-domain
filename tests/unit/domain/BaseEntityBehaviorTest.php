@@ -11,19 +11,19 @@ use yii2module\account\domain\v3\helpers\TestAuthHelper;
 class BaseEntityBehaviorTest extends Unit {
 	
 	public function testAuthor() {
-		TestAuthHelper::authById(381070);
+		TestAuthHelper::authById(3);
 		$entity = new PostEntity();
-		$this->tester->assertEquals($entity->created_by, 381070);
-		$this->tester->assertEquals($entity->updated_by, 381070);
+		$this->tester->assertEquals($entity->created_by, 3);
+		$this->tester->assertEquals($entity->updated_by, 3);
 		
-		TestAuthHelper::authById(381949);
+		TestAuthHelper::authById(1);
 		$entity->text = 'qwerty123456';
-		$this->tester->assertEquals($entity->created_by, 381070);
-		$this->tester->assertEquals($entity->updated_by, 381949);
+		$this->tester->assertEquals($entity->created_by, 3);
+		$this->tester->assertEquals($entity->updated_by, 1);
 	}
 	
 	public function testSetEmpty() {
-		TestAuthHelper::authById(381070);
+		TestAuthHelper::authById(3);
 		$entity = new PostEntity();
 
 		$this->tester->assertGreaterThan(date('Y-m-d H:i:s', 1532886079), $entity->created_at);
@@ -35,7 +35,7 @@ class BaseEntityBehaviorTest extends Unit {
 	}
 
     public function testInvslidValue() {
-        TestAuthHelper::authById(381070);
+        TestAuthHelper::authById(3);
         $entity = new PostEntity();
         try {
             $entity->updated_at = 'wertyu';
@@ -46,7 +46,7 @@ class BaseEntityBehaviorTest extends Unit {
     }
 
     public function testReadOnly() {
-        TestAuthHelper::authById(381070);
+        TestAuthHelper::authById(3);
         $entity = new PostEntity();
 
         try {
@@ -66,7 +66,7 @@ class BaseEntityBehaviorTest extends Unit {
 
     public function testArrayField()
     {
-        TestAuthHelper::authById(381070);
+        TestAuthHelper::authById(3);
         $entity = new PostEntity();
 
         $expected = [
@@ -91,7 +91,7 @@ class BaseEntityBehaviorTest extends Unit {
 
     public function testArrayFieldModify()
     {
-        TestAuthHelper::authById(381070);
+        TestAuthHelper::authById(3);
         $entity = new PostEntity();
 
         $expected = [
@@ -131,7 +131,7 @@ class BaseEntityBehaviorTest extends Unit {
 
     public function testArrayFieldNull()
     {
-        TestAuthHelper::authById(381070);
+        TestAuthHelper::authById(3);
         $entity = new PostEntity();
 
         $this->tester->assertEquals(null, $entity->categories_id);

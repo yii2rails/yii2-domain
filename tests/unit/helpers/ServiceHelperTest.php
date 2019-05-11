@@ -17,11 +17,11 @@ class ServiceHelperTest extends Unit
 		$executor->domain = 'account';
 		$executor->service = 'login';
 		$executor->method = 'oneById';
-		$executor->params = 381949;
+		$executor->params = 1;
 		$entity = ServiceHelper::run($executor);
 		$this->tester->assertEntity([
-			'id' => 381949,
-			'login' => '77771111111',
+			'id' => 1,
+			'login' => 'admin',
 		], $entity);
 	}
 	
@@ -31,11 +31,11 @@ class ServiceHelperTest extends Unit
 		$executor = new ServiceExecutorEntity();
 		$executor->id = 'account.login';
 		$executor->method = 'oneById';
-		$executor->params = 381949;
+		$executor->params = 1;
 		$entity = ServiceHelper::run($executor);
 		$this->tester->assertEntity([
-			'id' => 381949,
-			'login' => '77771111111',
+			'id' => 1,
+			'login' => 'admin',
 		], $entity);
 	}
 	
@@ -45,7 +45,7 @@ class ServiceHelperTest extends Unit
 		$executor = new ServiceExecutorEntity();
 		$executor->id = 'account.login1';
 		$executor->method = 'oneById';
-		$executor->params = 381949;
+		$executor->params = 1;
 		try {
 			$entity = ServiceHelper::run($executor);
 			$this->tester->assertBad($entity);
@@ -61,7 +61,7 @@ class ServiceHelperTest extends Unit
 		$executor = new ServiceExecutorEntity();
 		$executor->id = 'account1.login';
 		$executor->method = 'oneById';
-		$executor->params = 381949;
+		$executor->params = 1;
 		try {
 			$entity = ServiceHelper::run($executor);
 			$this->tester->assertBad($entity);
