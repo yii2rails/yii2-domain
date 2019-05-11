@@ -20,7 +20,7 @@ use yii\di\ServiceLocator;
  * @property-read \yii2lab\rbac\domain\Domain $rbac
  * @property-read \yii2lab\rest\domain\Domain $rest
  *
- * @property-read \yii2module\account\domain\v2\Domain $account
+ * @property-read \yii2module\account\domain\v3\Domain $account
  * @property-read \yii2module\article\domain\Domain $article
  * @property-read \yii2module\encrypt\domain\Domain $encrypt
  * @property-read \yii2module\guide\domain\Domain $guide

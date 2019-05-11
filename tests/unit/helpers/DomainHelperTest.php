@@ -5,8 +5,8 @@ namespace tests\unit\helpers;
 use yii2lab\test\Test\Unit;
 use yii\base\Model;
 use yii2rails\domain\helpers\DomainHelper;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\helpers\TestAuthHelper;
+use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2module\account\domain\v3\helpers\TestAuthHelper;
 
 class DomainHelperTest extends Unit
 {
@@ -50,7 +50,7 @@ class DomainHelperTest extends Unit
 		TestAuthHelper::defineAccountDomain();
 		
 		$isHas = DomainHelper::messagesAlias('account');
-		$this->tester->assertEquals($isHas, '@yii2module/account/domain/v2/messages');
+		$this->tester->assertEquals($isHas, '@yii2module/account/domain/v3/messages');
 	}
 	
 }

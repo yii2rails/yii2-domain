@@ -6,7 +6,7 @@ use tests\_source\entities\PostEntity;
 use yii2rails\domain\values\ArrayValue;
 use yii2rails\extension\arrayTools\base\BaseCollection;
 use yii2lab\test\Test\Unit;
-use yii2module\account\domain\v2\helpers\TestAuthHelper;
+use yii2module\account\domain\v3\helpers\TestAuthHelper;
 
 class BaseEntityBehaviorTest extends Unit {
 	

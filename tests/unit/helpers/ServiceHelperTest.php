@@ -5,7 +5,7 @@ use yii2lab\test\Test\Unit;
 use yii\base\InvalidArgumentException;
 use yii2rails\domain\entities\ServiceExecutorEntity;
 use yii2rails\domain\helpers\ServiceHelper;
-use yii2module\account\domain\v2\helpers\TestAuthHelper;
+use yii2module\account\domain\v3\helpers\TestAuthHelper;
 
 class ServiceHelperTest extends Unit
 {
