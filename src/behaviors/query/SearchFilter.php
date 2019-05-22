@@ -69,15 +69,21 @@ class SearchFilter extends Behavior {
     }
 
     private function generateLikeConditionItem($attrKey, $attrValue, BaseRepository $repository) {
-        $condition = [
+        $condition2 = array();
+        $condition3 = array();
+        $condition1 = [
             'or',
         ];
         $values = explode(SPC, $attrValue);
         foreach ($values as $value) {
             //$this->validateSearchText($attrValue, $attrKey);
             $attrKey = $repository->alias->encode($attrKey);
-            $condition[] = new Expression('lower(cast("' . $attrKey . '" as varchar)) like \'%' . mb_strtolower($value). '%\'');
+            $condition1[] = new Expression(mb_strtolower($attrKey) . " like '%" . str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value) . "%'");
+            $condition2[] = new Expression(mb_strtolower($attrKey) . " like '%" . mb_strtolower(str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value)) . "%'");
+            $condition3[] = new Expression(mb_strtolower($attrKey) . " like '%" . mb_ucfirst(str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value)) . "%'");
         }
+        $condition = array_merge($condition1, $condition2, $condition3);
+
         return $condition;
     }
 
