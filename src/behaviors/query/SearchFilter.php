@@ -68,22 +68,24 @@ class SearchFilter extends Behavior {
         return $condition;
     }
 
+    private function securityValue($value) {
+        $value = str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value);
+        return $value;
+    }
+
     private function generateLikeConditionItem($attrKey, $attrValue, BaseRepository $repository) {
-        $condition2 = array();
-        $condition3 = array();
-        $condition1 = [
+        $condition = [
             'or',
         ];
         $values = explode(SPC, $attrValue);
         foreach ($values as $value) {
             //$this->validateSearchText($attrValue, $attrKey);
             $attrKey = $repository->alias->encode($attrKey);
-            $condition1[] = new Expression(mb_strtolower($attrKey) . " like '%" . str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value) . "%'");
-            $condition2[] = new Expression(mb_strtolower($attrKey) . " like '%" . mb_strtolower(str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value)) . "%'");
-            $condition3[] = new Expression(mb_strtolower($attrKey) . " like '%" . mb_ucfirst(str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value)) . "%'");
+            $attrKey = $this->securityValue($attrKey);
+            $value = $this->securityValue($value);
+            $value = mb_strtolower($value);
+            $condition[] = new Expression('lower(cast("' . $attrKey . '" as varchar)) ilike \'%' . $value. '%\'');
         }
-        $condition = array_merge($condition1, $condition2, $condition3);
-
         return $condition;
     }
 
