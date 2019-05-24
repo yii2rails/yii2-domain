@@ -2,6 +2,8 @@
 
 namespace yii2rails\domain\data;
 
+use yii\db\Expression;
+
 class GetParams {
 	
 	public function getAllParams($params = [], Query $query = null) {
@@ -34,7 +36,11 @@ class GetParams {
 		}
 		if(isset($params['where'])) {
 			foreach($params['where'] as $name => $value) {
-				$query->where($name, $value);
+			    if ($value == '{null}') {
+                    $query->andWhere(new Expression('(' . $name . ' is null)'));
+                } else {
+                    $query->where($name, $value);
+                }
 			}
 		}
 		return $query;
