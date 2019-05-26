@@ -34,6 +34,8 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	const EVENT_UPDATE = 'update';
 	const EVENT_DELETE = 'delete';
 
+	public $dataProviderFromSelf = false;
+
 	public function sort() {
 		return [];
 	}
@@ -41,7 +43,7 @@ class BaseActiveService extends BaseService implements CrudInterface {
 	public function getDataProvider(Query $query = null) {
 		$query = $this->prepareQuery($query, ActiveMethodEnum::READ_ALL);
 		//if($this->repository instanceof ReadPaginationInterface) {
-		if(method_exists($this->repository, 'getDataProvider')) {
+		if(!$this->dataProviderFromSelf && method_exists($this->repository, 'getDataProvider')) {
 			$dataProvider = $this->repository->getDataProvider($query);
 		}
 		if(empty($dataProvider)) {
