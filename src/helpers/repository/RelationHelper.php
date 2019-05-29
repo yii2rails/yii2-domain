@@ -13,8 +13,8 @@ use yii2rails\domain\helpers\DomainHelper;
 
 class RelationHelper {
 	
-	public static function load(string $domain, string $id, Query $query, $data, WithDto $withDto = null) {
-		$relations = RelationConfigHelper::getRelationsConfig($domain, $id);
+	public static function load(string $domain, string $repositoryId, Query $query, $data, WithDto $withDto = null) {
+		$relations = RelationConfigHelper::getRelationsConfig($domain, $repositoryId);
 		$remainOfWith = [];
 		$withParams = RelationWithHelper::fetch($query, $remainOfWith);
 		foreach($withParams as $relationName) {

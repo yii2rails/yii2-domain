@@ -13,8 +13,8 @@ class RelationConfigHelper {
 	 *
 	 * @return RelationEntity[]
 	 */
-	public static function getRelationsConfig(string $domain, string $id) : array {
-		$repositoryEntity = \App::$domain->get($domain)->repositories->get($id);
+	public static function getRelationsConfig(string $domain, string $repositoryId) : array {
+		$repositoryEntity = \App::$domain->get($domain)->repositories->get($repositoryId);
 		$relations =  $repositoryEntity->relations();
 		$relations = self::normalizeConfig($relations);
 		$relationsCollection = Helper::forgeEntity($relations, RelationEntity::class, true, true);
