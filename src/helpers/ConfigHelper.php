@@ -4,7 +4,9 @@ namespace yii2rails\domain\helpers;
 
 use ReflectionException;
 use Yii;
+use yii\base\InvalidArgumentException;
 use yii\helpers\ArrayHelper;
+use yii2rails\domain\Domain;
 use yii2rails\extension\common\helpers\ClassHelper;
 use yii2rails\extension\common\helpers\Helper;
 
@@ -21,6 +23,10 @@ class ConfigHelper {
 			$data['id'] = $domainId;
 		}
 		if(!empty($data['class'])) {
+            $isDomainClass = is_subclass_of($data['class'], Domain::class, true);
+            if(!$isDomainClass) {
+                throw new InvalidArgumentException('Domain ID: "' . $domainId . '". Class "' . $data['class'] . '" not instance of "' . Domain::class . '"!');
+            }
 			try {
 				$domainInstance = Yii::createObject($data['class']);
 			} catch(ReflectionException $e) {

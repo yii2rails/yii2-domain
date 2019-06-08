@@ -74,8 +74,8 @@ class DomainHelper {
 	 * @throws \yii\base\InvalidConfigException
 	 */
 	private static function define($domainId, $definition) {
-		$definition = ConfigHelper::normalizeItemConfig($domainId, $definition);
 		if(!\App::$domain->has($domainId)) {
+            $definition = ConfigHelper::normalizeItemConfig($domainId, $definition);
 			\App::$domain->set($domainId, $definition);
 		}
 	}
