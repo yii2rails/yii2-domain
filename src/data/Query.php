@@ -5,6 +5,7 @@ namespace yii2rails\domain\data;
 use Yii;
 use yii\base\Arrayable;
 use yii\db\Expression;
+use yii\db\ExpressionInterface;
 use yii2lab\db\domain\helpers\TableHelper;
 use yii2rails\domain\data\query\Rest;
 use yii2rails\extension\common\helpers\TypeHelper;
@@ -28,6 +29,7 @@ class Query extends Component implements Arrayable {
 	const LIMIT = 'limit';
 	const OFFSET = 'offset';
 	const ORDER = 'order';
+    const GROUP = 'group';
     const JOIN = 'join';
 	
 	private $query = [
@@ -262,6 +264,12 @@ class Query extends Component implements Arrayable {
 		$this->query[self::ORDER] = $this->normalizeOrderBy($columns);
 		return $this;
 	}
+
+    public function groupBy($columns)
+    {
+        $this->query[self::GROUP] = $this->normalizeGroupBy($columns);
+        return $this;
+    }
 	
 	/**
 	 * Adds additional ORDER BY columns to the query.
@@ -342,6 +350,14 @@ class Query extends Component implements Arrayable {
 		
 		return $result;
 	}
+
+	protected function normalizeGroupBy($columns) {
+        if ($columns instanceof Expression) {
+            return [$columns];
+        } elseif (is_array($columns)) {
+            return $columns;
+        }
+    }
 	
 	private function setParam($fields, $nameParam) {
 		if(is_array($fields)) {
