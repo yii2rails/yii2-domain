@@ -10,15 +10,21 @@ use yii2rails\domain\base\Action;
 class CreateAction extends Action {
 	
 	public $serviceMethod = 'create';
+	public $redirect;
 	
 	public function run() {
 		$this->view->title = Yii::t('main', 'create_title');
-		$model =$this->createForm();
+		$direction = rtrim($this->baseUrl, SL);
+		$model = $this->createForm();
+
 		if(Yii::$app->request->isPost && !$model->hasErrors()) {
 			try{
 				$this->runServiceMethod($model->toArray());
+                if (isset($this->redirect) && !empty($this->redirect)) {
+                    $direction = rtrim($this->baseUrl, SL) . $this->redirect;
+                }
 				\App::$domain->navigation->alert->create(['main', 'create_success'], Alert::TYPE_SUCCESS);
-				return $this->redirect(rtrim($this->baseUrl, SL));
+				return $this->redirect($direction);
 			} catch (UnprocessableEntityHttpException $e){
 				$model->addErrorsFromException($e);
 			}
