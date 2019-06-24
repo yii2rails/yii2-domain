@@ -23,12 +23,12 @@ use yii\di\ServiceLocator;
  * @property-read \yii2module\account\domain\v3\Domain $account
  * @property-read \yii2module\article\domain\Domain $article
  * @property-read \yii2module\encrypt\domain\Domain $encrypt
- * @property-read \yii2module\guide\domain\Domain $guide
+ * @property-read \yii2tool\guide\domain\Domain $guide
  * @property-read \yii2module\lang\domain\Domain $lang
  * @property-read \yii2module\profile\domain\v2\Domain $profile
  * @property-read \yii2module\summary\domain\Domain $summary
- * @property-read \yii2module\tool\domain\Domain $tool
- * @property-read \yii2module\vendor\domain\Domain $vendor
+ * @property-read \yii2tool\tool\domain\Domain $tool
+ * @property-read \yii2tool\vendor\domain\Domain $vendor
  *
  * @method Domain get($id)
  *

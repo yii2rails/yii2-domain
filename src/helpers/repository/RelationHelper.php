@@ -23,6 +23,7 @@ class RelationHelper {
 			$newWithDto->remain = $remainOfWith;
 			self::hh($withDto, $newWithDto);
 			self::prepareWithDto($query, $newWithDto);
+			$data = empty($data) ? [] : $data;
 			$data = self::loadRelations($data, $newWithDto);
 		}
 		return $data;
