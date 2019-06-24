@@ -8,6 +8,7 @@ use yii2rails\domain\data\Query;
 use yii2rails\domain\Domain;
 use yii2rails\domain\helpers\QueryValidator;
 use yii2rails\domain\helpers\repository\QueryFilter;
+use yii2rails\domain\interfaces\repositories\ReadAllInterface;
 use yii2rails\domain\interfaces\repositories\ReadInterface;
 use Yii;
 use yii\base\Component;
@@ -76,8 +77,8 @@ abstract class BaseRepository extends Component {
 	 * @throws InvalidConfigException
 	 */
 	public function getDataProvider(Query $query = null) {
-		if(!$this instanceof ReadInterface) {
-			throw new InvalidConfigException("Repository " . static::class . " not implements of ReadInterface");
+		if(!$this instanceof ReadAllInterface) {
+			throw new InvalidConfigException("Repository " . static::class . " not implements of ReadAllInterface");
 		}
 		$query = $this->prepareQuery($query);
 		$dataProvider = new ActiveDataProvider([
