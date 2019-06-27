@@ -98,3 +98,74 @@ class CitySchema extends BaseSchema {
 	
 }
 ```
+
+Параметры:
+
+* `type` - тип связи (ко многим или к одному)
+* `field` - имя поля в сущности текущего репозитория
+* `foreign` - параметры связи с другим хранилищем
+	* `id` - идентификатор (формат: `домен.хранилище`)
+	* `field` - имя поля в сущности подтягиваемого репозитория
+
+Если не указан параметр `foreign.field`, то по умолчанию он будет равен 'id'.
+
+Можно сделать связь многие ко многим:
+
+```php
+class AeticleSchema extends BaseSchema {
+	
+	public function relations() {
+		return [
+			'categories' => [
+                'type' => RelationEnum::MANY_TO_MANY,
+                'via' => [
+                    'id' => 'article.categories',
+                    'this' => 'article',
+                    'foreign' => 'category',
+                ],
+            ],
+		];
+	}
+	
+}
+```
+
+Параметры:
+
+* `type` - тип связи (ко многим или к одному)
+* `via` - параметры связи с промежуточным хранилищем
+	* `id` - идентификатор промежуточного хранилища (формат: `домен.хранилище`)
+	* `this` - промежуточное имя реляции для связи с текущим репозиторием
+	* `foreign` - промежуточное имя реляции для связи целевым репозиторием
+
+>Note: Обратите внимание: в параметрах `this` и `foreign` указывается не имя поля, а имя реляции, которое описано в промежуточном репозитории
+
+При этом, в промежуточном репозитории должны быть объявлены связи текущий и целевой репозиторий:
+
+```php
+```php
+class CategoriesSchema extends BaseSchema {
+	
+	public function relations() {
+		return [
+			'article' => [
+                'type' => RelationEnum::ONE,
+                'field' => 'article_id',
+                'foreign' => [
+                    'id' => 'article.article',
+                    'field' => 'id',
+                ],
+            ],
+            'category' => [
+                'type' => RelationEnum::ONE,
+                'field' => 'category_id',
+                'foreign' => [
+                    'id' => 'article.category',
+                    'field' => 'id',
+                ],
+            ],
+		];
+	}
+	
+}
+```

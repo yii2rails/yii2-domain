@@ -20,13 +20,13 @@ Domain Driven Design
 * [Сущность](entity.md)
 * [Коллекция](collection.md)
 * [Объект-значение](value.md)
+* [Схема](schema.md)
 
 ## Классы
 
 * [Поведение](behavior.md)
 * [Фабрика](factory.md)
 * [Запрос](query.md)
-* [Схема](schema.md)
 * [DTO (Data transfer object)](dto.md)
 
 ## Драйвера
