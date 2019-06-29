@@ -25,6 +25,7 @@ use yii\di\ServiceLocator;
  * @property-read \yii2module\encrypt\domain\Domain $encrypt
  * @property-read \yii2tool\guide\domain\Domain $guide
  * @property-read \yii2module\lang\domain\Domain $lang
+ * @property-read \yii2bundle\i18n\domain\Domain $i18n
  * @property-read \yii2module\profile\domain\v2\Domain $profile
  * @property-read \yii2module\summary\domain\Domain $summary
  * @property-read \yii2tool\tool\domain\Domain $tool
