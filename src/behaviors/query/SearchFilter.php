@@ -69,7 +69,21 @@ class SearchFilter extends Behavior {
     }
 
     private function securityValue($value) {
-        $value = str_replace(['"', "'", '<', '>', '%', ';', '.', ',', "\\", '/', '*', '+', '-'], '', $value);
+        $value = str_replace([
+            '"',
+            "'",
+            '<',
+            '>',
+            '%',
+            ';',
+            //'.', 
+            ',',
+            "\\",
+            '/',
+            '*',
+            '+',
+            '-',
+        ], '', $value);
         return $value;
     }
 
