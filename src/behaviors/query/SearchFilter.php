@@ -82,7 +82,7 @@ class SearchFilter extends Behavior {
             '/',
             '*',
             '+',
-            '-',
+            //'-',
         ], '', $value);
         return $value;
     }
