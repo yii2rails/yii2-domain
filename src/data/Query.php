@@ -371,5 +371,94 @@ class Query extends Component implements Arrayable {
 		}
 		
 	}
-	
+
+    /**
+     * Добавить в запрос поиск по jsonb полю
+     *
+     * ПРИМЕР поиска по jsonb с вложенными массивами
+     * $query->setJsonbCondition(['key_1','key_2','final_key'], 'что то ищу');
+     * поиск с 1 вложенностью
+     * $query->setJsonbCondition('final_key', 'что то ищу');
+     * поиск по IN
+     * $query->setJsonbCondition($'group_id', 'что то ищу', false, "IN");
+     * поиск с использованием $value
+     * $query->setJsonbCondition($['someprop','caption','ru'], 'что то ищу', false, '=', 'properties', 'название');
+     *
+     * @param mixed $value значение для подстановки
+     * @param string||string[] $attr
+     * @param string $operator
+     * @param string $jsonbFieldName
+     */
+    public function setJsonbCondition($attrs, $value, $operator = '=', $jsonbFieldName = 'value', $lower = false)
+    {
+        $condition = $this->getJsonbCondition($attrs, $value, $operator, $jsonbFieldName, $lower);
+        $this->andWhere($condition);
+
+    }
+
+    /**
+     * Получить массив для построения условия
+     * @param string||string[] $attr
+     * @param mixed $value значение для подстановки
+     * @param string $operator
+     * @param string $jsonbFieldName
+     * @param mixed $value значение для подстановки
+     * @return string
+     */
+    public function getJsonbCondition($attrs, $value, $operator = '=', $jsonbFieldName = 'value', $lower = false)
+    {
+        $fn = null;
+        if($lower) {
+            $fn = 'lower';
+        }
+        $jsonPath = null;
+        if (is_string($attrs)){
+            $attrs = [$attrs];
+        }
+        $attr = null;
+        $attrsCount = count($attrs);
+        $i = 1;
+        foreach ($attrs as $ind => $key) {
+            if ($i == $attrsCount){
+                $attr = $key;
+            }
+            if ($i < $attrsCount){
+                $jsonPath.=" -> '{$key}'";
+            }else{
+                $jsonPath.=" ->> '{$key}'";
+                continue;
+            }
+            $i++;
+        }
+
+        return $this->createJsonBCondition($attr, $fn, $jsonbFieldName, $jsonPath, $operator, $value, $lower);
+    }
+
+    /**
+     * Собираем условие для поиска
+     */
+    public function createJsonBCondition($attr, $fn, $jsonbFieldName, $jsonPath, $operator, $value, $lower)
+    {
+        if ($lower){
+            $value = mb_strtolower($value);
+        }
+        if ($operator == "IN") {
+            if (!is_array($value)){
+                $value = [$value];
+            }
+            $inConditionElements = "";
+            foreach ($value as $elem) {
+                $inConditionElements.="'".$elem."',";
+            }
+            $inConditionElements = trim($inConditionElements, ',');
+            $condition = "{$fn}({$jsonbFieldName} {$jsonPath}) {$operator} ({$inConditionElements})";
+        }else{
+            $param = "'".($operator == 'like'?'%'.$value.'%':$value)."'";
+            $condition = "{$fn}({$jsonbFieldName} {$jsonPath}) {$operator} {$param}";
+        }
+
+        return $condition;
+    }
+    
+    
 }
