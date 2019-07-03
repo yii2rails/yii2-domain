@@ -116,7 +116,14 @@ class Query extends Component implements Arrayable {
 		}
 		return $this;
 	}
-	
+
+    public function addWhere($key, $condition)
+    {
+        $this->query[self::WHERE][$key] = $condition;
+
+        return $this;
+    }
+
 	public function andWhere($condition)
 	{
 		if ($this->query[self::WHERE] === null) {
