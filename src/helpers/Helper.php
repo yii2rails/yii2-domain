@@ -58,7 +58,15 @@ class Helper {
 	    }
 	    return $data;
     }
-    
+
+    public static function generateFormLabels(Model $model, $messagePath) {
+	    $labels = [];
+	    foreach ($model->attributes() as $attribute) {
+            $labels[$attribute] = Yii::t($messagePath, $attribute);
+        }
+        return $labels;
+    }
+
     public static function forgeForm(Model $model, $data = null) {
 		$data = self::post($data, $model);
         $model->setAttributes($data, false);
