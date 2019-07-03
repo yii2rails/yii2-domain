@@ -16,6 +16,7 @@ class UniqueValidator extends Validator {
     public $provider;
     public $message = ['main', 'unique_already_exists'];
     public $fields;
+    public $primaryKey = 'id';
 
     public function validateAttribute($model, $attribute) {
         /** @var ReadInterface $service */
@@ -25,6 +26,10 @@ class UniqueValidator extends Validator {
         $query->andWhere($condition);
         try {
             $entity = $service->one($query);
+            $pk = $this->primaryKey;
+            if($pk && $entity->{$pk} == $model->{$pk}) {
+                return;
+            }
             $message = LangHelper::extract($this->message);
             $this->addError($model, $attribute, $message, ['attribute' => $attribute]);
         } catch (NotFoundHttpException $e) {}
