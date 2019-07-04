@@ -446,26 +446,41 @@ class Query extends Component implements Arrayable {
      */
     public function createJsonBCondition($attr, $fn, $jsonbFieldName, $jsonPath, $operator, $value, $lower)
     {
-        if ($lower){
-            $value = mb_strtolower($value);
-        }
         if ($operator == "IN") {
             if (!is_array($value)){
                 $value = [$value];
             }
             $inConditionElements = "";
             foreach ($value as $elem) {
+                $elem = $this->cleanStringValue($elem, $lower);
                 $inConditionElements.="'".$elem."',";
             }
             $inConditionElements = trim($inConditionElements, ',');
-            $condition = "{$fn}({$jsonbFieldName} {$jsonPath}) {$operator} ({$inConditionElements})";
-        }else{
-            $param = "'".($operator == 'like'?'%'.$value.'%':$value)."'";
-            $condition = "{$fn}({$jsonbFieldName} {$jsonPath}) {$operator} {$param}";
+            return "{$fn}({$jsonbFieldName} {$jsonPath}) {$operator} ({$inConditionElements})";
         }
+        $value = $this->cleanStringValue($value, $lower);
+        $param = "'".($operator == 'like'?'%'.$value.'%':$value)."'";
+        $condition = "{$fn}({$jsonbFieldName} {$jsonPath}) {$operator} {$param}";
 
         return $condition;
     }
-    
-    
+
+
+
+    /**
+     * Зачистка строки перед отправкой в запрос
+     * @param $value
+     * @return mixed
+     */
+    public function cleanStringValue($value, $lower = false)
+    {
+        $value =  preg_replace('/[^ a-zа-яё\d]/ui', '',$value );
+        if ($lower){
+            $value = mb_strtolower($value);
+        }
+
+        return $value;
+    }
+
+
 }
