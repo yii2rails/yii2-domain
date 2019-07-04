@@ -132,10 +132,9 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		$this->beforeCreate($data);
 		/** @var \yii2rails\domain\BaseEntity $entity */
 		$entity = $this->domain->factory->entity->create($this->id, $data);
-		
 		$entity->validate();
 		$entity = $this->repository->insert($entity);
-		$this->afterCreate($data);
+		$this->afterCreate($entity);
 		return $this->afterAction(self::EVENT_CREATE, $entity);
 	}
 	
@@ -146,7 +145,7 @@ class BaseActiveService extends BaseService implements CrudInterface {
         $this->beforeUpdate($data);
 		$entity->validate();
 		$this->repository->update($entity);
-        $this->afterUpdate($data);
+        $this->afterUpdate($entity);
 
 		return $this->afterAction(self::EVENT_UPDATE);
 	}
@@ -188,11 +187,11 @@ class BaseActiveService extends BaseService implements CrudInterface {
 
 	protected function beforeCreate(&$data){}
 
-	protected function afterCreate(&$data){}
+	protected function afterCreate($entity){}
 
 	protected function beforeUpdate(&$data){}
 
-	protected function afterUpdate(&$data){}
+	protected function afterUpdate($entity){}
 
     /*private function checkAccess($action, $accessList = null, $param = null) {
         if(!$accessList) {
