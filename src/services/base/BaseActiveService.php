@@ -143,6 +143,7 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		$this->beforeAction(self::EVENT_UPDATE);
 		$data = ArrayHelper::toArray($entity);
         $this->beforeUpdate($data);
+        $entity->load($data);
 		$entity->validate();
 		$this->repository->update($entity);
         $this->afterUpdate($entity);
@@ -154,11 +155,11 @@ class BaseActiveService extends BaseService implements CrudInterface {
 		$this->beforeAction(self::EVENT_UPDATE);
 		$data = ArrayHelper::toArray($data);
 		$entity = $this->oneById($id);
-		$entity->load($data);
         $this->beforeUpdate($data);
+		$entity->load($data);
 		$entity->validate();
 		$this->repository->update($entity);
-        $this->afterUpdate($data);
+        $this->afterUpdate($entity);
 
 		return $this->afterAction(self::EVENT_UPDATE, $entity);
 	}
