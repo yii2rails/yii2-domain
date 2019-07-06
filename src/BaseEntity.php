@@ -363,6 +363,7 @@ class BaseEntity extends Component implements Arrayable {
      * @return bool
      */
     private function isProtected($name) {
+        return;
         $keyFields = $this->keyFields();
         $keyIsSet = false;
         foreach ($keyFields as $keyField){
