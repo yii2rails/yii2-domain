@@ -37,6 +37,25 @@ class BaseEntity extends Component implements Arrayable {
 		return [];
 	}
 
+    /**
+     * Возвращает поле по которому можно идентифицировать уникальность сущности
+     * @return array
+     */
+	public function keyFields()
+    {
+        return [
+            'id'
+        ];
+    }
+
+    /**
+     * Возвращает поля запрещенные к редактированию
+     * @return array
+     */
+    public function protectedFields() {
+        return [];
+    }
+
     public function readOnlyFields() {
         return [];
     }
@@ -152,6 +171,7 @@ class BaseEntity extends Component implements Arrayable {
 
     public function __set($name, $value) {
         $this->isReadOnly($name);
+        $this->isProtected($name);
         $this->trigger(self::EVENT_BEFORE_SET_ATTRIBUTE);
         $setter = $this->magicMethodName($name, 'set');
         if(method_exists($this, $setter)) {
@@ -218,6 +238,7 @@ class BaseEntity extends Component implements Arrayable {
     }
 
     public function __unset($name) {
+        $this->isProtected($name);
         $setter = $this->magicMethodName($name, 'set');
         if(method_exists($this, $setter)) {
             $this->$setter(null);
@@ -333,6 +354,43 @@ class BaseEntity extends Component implements Arrayable {
             // ReadOnlyException
         }
 	    return true;
+    }
+
+    /**
+     * Проверка на модификацию защищенного поля
+     * первичные ключи являются по умолчанию защищенными
+     * @param $name
+     * @return bool
+     */
+    private function isProtected($name) {
+        $keyFields = $this->keyFields();
+        $keyIsSet = false;
+        foreach ($keyFields as $keyField){
+            if (!isset($this->{$keyField})){
+                continue;
+            }
+            if($keyField == $name){
+                throw new InvalidCallException('Setting protected property: ' . get_class($this) . '::' . $name);
+            }
+            if ($this->{$keyField} && !$keyIsSet){
+                $keyIsSet = true;
+            }
+        }
+        if (!$keyIsSet) {
+            return true;
+        }
+        $protected = $this->protectedFields();
+        if (empty($protected)) {
+            return true;
+        }
+        if (!in_array($name, $protected)) {
+            return true;
+        }
+        if (!empty($this->$name)) {
+            throw new InvalidCallException('Setting protected property: ' . get_class($this) . '::' . $name);
+        }
+
+        return true;
     }
 
 	private function evaluteFieldValue($name, $value) {
