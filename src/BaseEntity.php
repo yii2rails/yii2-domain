@@ -171,7 +171,7 @@ class BaseEntity extends Component implements Arrayable {
 
     public function __set($name, $value) {
         $this->isReadOnly($name);
-        $this->isProtected($name);
+        $this->isProtected($name, $value);
         $this->trigger(self::EVENT_BEFORE_SET_ATTRIBUTE);
         $setter = $this->magicMethodName($name, 'set');
         if(method_exists($this, $setter)) {
@@ -362,28 +362,29 @@ class BaseEntity extends Component implements Arrayable {
      * @param $name
      * @return bool
      */
-    private function isProtected($name) {
+    private function isProtected($name, $value) {
         $keyFields = $this->keyFields();
+        $protected = $this->protectedFields();
         $keyIsSet = false;
         foreach ($keyFields as $keyField){
             if (!isset($this->{$keyField})){
                 continue;
             }
             if ($this->{$keyField}){
+                $protected[] = $keyField;
                 $keyIsSet = true;
             }
         }
         if (!$keyIsSet) {
             return true;
         }
-        $protected = $this->protectedFields();
         if (empty($protected)) {
             return true;
         }
         if (!in_array($name, $protected)) {
             return true;
         }
-        if (!empty($this->$name)) {
+        if (!empty($this->$name) && $this->$name !== $value) {
             throw new InvalidCallException('Setting protected property: ' . get_class($this) . '::' . $name);
         }
 
