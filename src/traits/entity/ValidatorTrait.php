@@ -54,9 +54,9 @@ trait ValidatorTrait {
     {
         $scenarios = [
             ScenarioEnum::SCENARIO_DEFAULT => [],
-            ScenarioEnum::SCENARIO_CREATE => $this->attributes(),
-//            ScenarioEnum::SCENARIO_UPDATE => $this->attributes(),
-//            ScenarioEnum::SCENARIO_TRUSTED => $this->attributes(),
+            ScenarioEnum::SCENARIO_CREATE => $this->getAttributes(),
+            ScenarioEnum::SCENARIO_UPDATE => $this->getAttributes(),
+            ScenarioEnum::SCENARIO_TRUSTED => $this->getAttributes(),
         ];
 
         foreach ($this->getValidators() as $validator) {
