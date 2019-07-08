@@ -53,10 +53,10 @@ trait ValidatorTrait {
     public function scenarios()
     {
         $scenarios = [
-            static::SCENARIO_DEFAULT => [],
-            static::SCENARIO_CREATE => $this->attributes(),
-//            static::SCENARIO_UPDATE => $this->attributes(),
-//            static::SCENARIO_TRUSTED => $this->attributes(),
+            ScenarioEnum::SCENARIO_DEFAULT => [],
+            ScenarioEnum::SCENARIO_CREATE => $this->attributes(),
+//            ScenarioEnum::SCENARIO_UPDATE => $this->attributes(),
+//            ScenarioEnum::SCENARIO_TRUSTED => $this->attributes(),
         ];
 
         foreach ($this->getValidators() as $validator) {
