@@ -29,6 +29,7 @@ use IteratorAggregate;
 use yii\helpers\Inflector;
 use yii\validators\RequiredValidator;
 use yii\validators\Validator;
+use yii2rails\domain\enums\ScenarioEnum;
 
 trait ValidatorTrait {
 
@@ -43,7 +44,7 @@ trait ValidatorTrait {
     /**
      * @var string current scenario
      */
-    private $_scenario = self::SCENARIO_DEFAULT;
+    private $_scenario = ScenarioEnum::SCENARIO_DEFAULT;
 
     public function rules() {
         return [];
@@ -51,7 +52,13 @@ trait ValidatorTrait {
 
     public function scenarios()
     {
-        $scenarios = [self::SCENARIO_DEFAULT => []];
+        $scenarios = [
+            static::SCENARIO_DEFAULT => [],
+            static::SCENARIO_CREATE => $this->attributes(),
+//            static::SCENARIO_UPDATE => $this->attributes(),
+//            static::SCENARIO_TRUSTED => $this->attributes(),
+        ];
+
         foreach ($this->getValidators() as $validator) {
             foreach ($validator->on as $scenario) {
                 $scenarios[$scenario] = [];
