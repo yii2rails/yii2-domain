@@ -9,7 +9,20 @@ use yii2rails\domain\BaseEntity;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 
 class Helper {
-	
+
+    public static function idsToArray($param) {
+        if(empty($param)) {
+            return [];
+        }
+        if(!is_array($param)) {
+            $param = explode(',', $param);
+        }
+        $param = array_map('trim', $param);
+        //$param = array_map('intval', $param);
+        //$param = array_map(function(){}, $param);
+        return $param;
+    }
+
 	public static function forgeEntity($value, string $className, bool $isCollection = null, $isSaveKey = false) {
 		if(empty($value)) {
 			return null;
