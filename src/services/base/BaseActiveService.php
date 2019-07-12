@@ -6,6 +6,7 @@ use yii\base\InvalidArgumentException;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\enums\ActiveMethodEnum;
+use yii2rails\domain\events\ServiceMethodEvent;
 use yii2rails\domain\helpers\ErrorCollection;
 use yii2rails\domain\interfaces\repositories\ReadExistsInterface;
 use yii2rails\domain\interfaces\services\CrudInterface;
@@ -62,24 +63,24 @@ class BaseActiveService extends BaseService implements CrudInterface {
     }
 
     public function isExistsById($id) {
-        $this->beforeAction(self::EVENT_VIEW);
+        $beforeEvent = $this->beforeAction(self::EVENT_VIEW, ['id' => $id]);
         return $this->repository->isExistsById($id);
     }
 
     public function isExists($condition) {
-        $this->beforeAction(self::EVENT_VIEW);
+        $beforeEvent = $this->beforeAction(self::EVENT_VIEW, ['condition' => $condition]);
         return $this->repository->isExists($condition);
     }
 
     public function one(Query $query = null) {
-        $this->beforeAction(self::EVENT_VIEW);
+        $beforeEvent = $this->beforeAction(self::EVENT_VIEW, ['query' => $query]);
         $query = $this->prepareQuery($query, ActiveMethodEnum::READ_ONE);
         $result = $this->repository->one($query);
         if(empty($result)) {
             throw new NotFoundHttpException(_METHOD_ . ':' . _LINE_);
         }
         $result = $this->afterReadTrigger($result, $query);
-        return $this->afterAction(self::EVENT_VIEW, $result);
+        return $this->afterAction(self::EVENT_VIEW, $result, ['query' => $query]);
     }
 
     /**
@@ -94,53 +95,53 @@ class BaseActiveService extends BaseService implements CrudInterface {
         if(empty($id)) {
             throw new InvalidArgumentException('ID can not be empty in ' . _METHOD_ . ' ' . static::class);
         }
-        $this->beforeAction(self::EVENT_VIEW);
+        $beforeEvent = $this->beforeAction(self::EVENT_VIEW, ['id' => $id, 'query' => $query]);
         $query = $this->prepareQuery($query, ActiveMethodEnum::READ_ONE);
         $result = $this->repository->oneById($id, $query);
         if(empty($result)) {
             throw new NotFoundHttpException(_METHOD_ . ':' . _LINE_);
         }
         $result = $this->afterReadTrigger($result, $query);
-        return $this->afterAction(self::EVENT_VIEW, $result);
+        return $this->afterAction(self::EVENT_VIEW, $result, ['id' => $id, 'query' => $query]);
     }
 
     public function count(Query $query = null) {
-        $this->beforeAction(self::EVENT_INDEX);
+        $beforeEvent = $this->beforeAction(self::EVENT_INDEX, ['query' => $query]);
         $query = $this->prepareQuery($query, ActiveMethodEnum::READ_COUNT);
         $result = $this->repository->count($query);
-        return $this->afterAction(self::EVENT_INDEX, $result);
+        return $this->afterAction(self::EVENT_INDEX, $result, ['query' => $query]);
     }
 
     public function all(Query $query = null) {
-        $this->beforeAction(self::EVENT_INDEX);
+        $beforeEvent = $this->beforeAction(self::EVENT_INDEX, ['query' => $query]);
         $query = $this->prepareQuery($query, ActiveMethodEnum::READ_ALL);
         $result = $this->repository->all($query);
         $result = $this->afterReadTrigger($result, $query);
-        return $this->afterAction(self::EVENT_INDEX, $result);
+        return $this->afterAction(self::EVENT_INDEX, $result, ['query' => $query]);
     }
 
     public function createEntity(BaseEntity $entity) {
-        $this->beforeAction(self::EVENT_CREATE);
+        $beforeEvent = $this->beforeAction(self::EVENT_CREATE, ['entity' => $entity]);
         $entity->validate();
         $entity = $this->repository->insert($entity);
-        return $this->afterAction(self::EVENT_CREATE, $entity);
+        return $this->afterAction(self::EVENT_CREATE, $entity, ['entity' => $entity]);
     }
 
     public function create($data) {
-        $this->beforeAction(self::EVENT_CREATE);
-        $data = ArrayHelper::toArray($data);
+        $beforeEvent = $this->beforeAction(self::EVENT_CREATE, ['data' => $data]);
+        $data = ArrayHelper::toArray($beforeEvent->params['data']);
         /** @var \yii2rails\domain\BaseEntity $entity */
         $entity = $this->domain->factory->entity->create($this->id, $data);
         $this->beforeCreate($entity);
         $entity->validate();
         $entity = $this->repository->insert($entity);
         $this->afterCreate($entity);
-        return $this->afterAction(self::EVENT_CREATE, $entity);
+        return $this->afterAction(self::EVENT_CREATE, $entity, ['data' => $data]);
     }
 
     // todo: протестить
     public function update(BaseEntity $entity) {
-        $this->beforeAction(self::EVENT_UPDATE);
+        $beforeEvent = $this->beforeAction(self::EVENT_UPDATE, ['entity' => $entity]);
         $this->beforeUpdate($entity);
         $data = ArrayHelper::toArray($entity);
         $entity->load($data);
@@ -148,12 +149,12 @@ class BaseActiveService extends BaseService implements CrudInterface {
         $this->repository->update($entity);
         $this->afterUpdate($entity);
 
-        return $this->afterAction(self::EVENT_UPDATE);
+        return $this->afterAction(self::EVENT_UPDATE, null, ['entity' => $entity]);
     }
 
     public function updateById($id, $data) {
-        $this->beforeAction(self::EVENT_UPDATE);
-        $data = ArrayHelper::toArray($data);
+        $beforeEvent = $this->beforeAction(self::EVENT_UPDATE, ['id' => $id, 'data' => $data]);
+        $data = ArrayHelper::toArray($beforeEvent->params['data']);
         $entity = $this->oneById($id);
         $entity->load($data);
         $this->beforeUpdate($entity);
@@ -161,25 +162,27 @@ class BaseActiveService extends BaseService implements CrudInterface {
         $this->repository->update($entity);
         $this->afterUpdate($entity);
 
-        return $this->afterAction(self::EVENT_UPDATE, $entity);
+        return $this->afterAction(self::EVENT_UPDATE, $entity, ['data' => $data]);
     }
 
     public function deleteById($id) {
-        $this->beforeAction(self::EVENT_DELETE);
+        $beforeEvent = $this->beforeAction(self::EVENT_DELETE, ['id' => $id]);
         $entity = $this->oneById($id);
         $this->repository->delete($entity);
-        return $this->afterAction(self::EVENT_DELETE);
+        return $this->afterAction(self::EVENT_DELETE, null, ['id' => $id]);
     }
 
-    protected function beforeAction($action) {
-        $event = new ActionEvent($action);
+    protected function beforeAction($action, array $params = []) {
+        $event = new ServiceMethodEvent($action);
+        $event->params = $params;
         $this->trigger($action, $event);
         if(!$event->isValid) {
             throw new ServerErrorHttpException('Service method "' . $action . '" not allow!');
         }
+        return $event;
     }
 
-    protected function afterAction($action, $result = null) {
+    protected function afterAction($action, $result = null, array $params = []) {
         $event = new ActionEvent($action);
         $event->result = $result;
         $this->trigger($action, $event);
