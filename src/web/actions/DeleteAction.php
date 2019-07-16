@@ -18,6 +18,8 @@ class DeleteAction extends Action {
 
 		if (isset($this->redirect) && !empty($this->redirect)) {
             $direction = rtrim($this->baseUrl, SL) . $this->redirect;
+        } else {
+            $direction = $_SERVER['HTTP_REFERER'];
         }
 
         \App::$domain->navigation->alert->create(['main', 'delete_success'], Alert::TYPE_SUCCESS);
