@@ -105,12 +105,20 @@ class BaseEntity extends Component implements Arrayable {
 		}
 		$fields = $this->addExtraFields($fields, $expand);
 		$result = [];
-		foreach($fields as $name) {
+		foreach($fields as  $key => $name) {
             $value = $this->getAttribute($name, $isRaw);
-			if($recursive) {
-                $result[ $name ] = Helper::toArray($value, $recursive);
+            if($recursive) {
+                if($name instanceof \Closure) {
+                    $result[ $key ] = Helper::toArray($value, $recursive);
+                } else {
+                    $result[ $name ] = Helper::toArray($value, $recursive);
+                }
             } else {
-                $result[ $name ] = $value;
+                if ($name instanceof \Closure) {
+                    $result[$key] = $value;
+                } else {
+                    $result[$name] = $value;
+                }
             }
 		}
 		return $result;
@@ -264,6 +272,10 @@ class BaseEntity extends Component implements Arrayable {
 
     public function getAttribute($name, $inRaw = false) {
         $this->trigger(self::EVENT_BEFORE_GET_ATTRIBUTE);
+        if($name instanceof \Closure) {
+            return $this->extractValue($name(), $inRaw);
+        }
+
         $getter = $this->magicMethodName($name, 'get');
         if(method_exists($this, $getter)) {
             // read property, e.g. getName()
@@ -362,7 +374,7 @@ class BaseEntity extends Component implements Arrayable {
      * @param $name
      * @return bool
      */
-    private function isProtected($name, $value) {
+    private function isProtected($name, $value = null) {
         $keyFields = $this->keyFields();
         $protected = $this->protectedFields();
         $keyIsSet = false;
