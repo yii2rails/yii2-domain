@@ -19,6 +19,7 @@ use yii\web\ServerErrorHttpException;
 use yii2rails\domain\data\ActiveDataProvider;
 use yii2rails\extension\activeRecord\helpers\SearchHelper;
 use yii2rails\extension\common\exceptions\DeprecatedException;
+use yii2rails\domain\enums\ScenarioEnum;
 
 /**
  * Class ActiveBaseService
@@ -189,11 +190,17 @@ class BaseActiveService extends BaseService implements CrudInterface {
         return $event->result;
     }
 
-    protected function beforeCreate($entity){}
+    protected function beforeCreate($entity)
+    {
+        $entity->scenario = ScenarioEnum::SCENARIO_CREATE;
+    }
 
     protected function afterCreate($entity){}
 
-    protected function beforeUpdate($entity){}
+    protected function beforeUpdate($entity)
+    {
+        $entity->scenario = ScenarioEnum::SCENARIO_UPDATE;
+    }
 
     protected function afterUpdate($entity){}
 
