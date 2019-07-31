@@ -22,6 +22,11 @@ class BaseEntityWithProperties extends BaseEntity
         return $this->propertyField;
     }
 
+    public static function properties()
+    {
+        return [];
+    }
+
     /**
      * @inheritdoc
      */
@@ -45,12 +50,11 @@ class BaseEntityWithProperties extends BaseEntity
     {
         if (
             property_exists($this, $this->getPropertyField())
-            && is_array($this->{$this->getPropertyField()})
+            && in_array($name, static::properties())
         ) {
-            $result = &$this->{$this->getPropertyField()}[$name];
-            $result = $value;
+            $this->{$this->getPropertyField()}[$name] = $value;
 
-            return $result;
+            return true;
         }
 
         return parent::__set($name, $value);
@@ -72,6 +76,7 @@ class BaseEntityWithProperties extends BaseEntity
                 };
             }
         }
+        unset($fields[$this->getPropertyField()]);
 
         return $fields;
     }
@@ -82,7 +87,6 @@ class BaseEntityWithProperties extends BaseEntity
     public function toArray(array $fields = [], array $expand = [], $recursive = true, $isRaw = false): array
     {
         $result = parent::toArray();
-        unset($result[$this->getPropertyField()]);
 
         return $result;
     }
