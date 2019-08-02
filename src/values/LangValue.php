@@ -2,7 +2,7 @@
 
 namespace yii2rails\domain\values;
 
-use yii2module\lang\domain\helpers\LangHelper;
+use yii2bundle\lang\domain\helpers\LangHelper;
 
 class LangValue extends BaseValue {
 	

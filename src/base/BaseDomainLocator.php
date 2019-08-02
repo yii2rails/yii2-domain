@@ -13,18 +13,18 @@ use yii\di\ServiceLocator;
  * @property-read \yii2rails\extension\jwt\Domain $jwt
  * @property-read \yii2rails\extension\package\domain\Domain $package
  * @property-read \yii2rails\extension\changelog\Domain $changelog
- * @property-read \yii2lab\geo\domain\Domain $geo
- * @property-read \yii2lab\navigation\domain\Domain $navigation
+ * @property-read \yii2bundle\geo\domain\Domain $geo
+ * @property-read \yii2bundle\navigation\domain\Domain $navigation
  * @property-read \yii2lab\notify\domain\Domain $notify
  * @property-read \yii2lab\qr\domain\Domain $qr
- * @property-read \yii2lab\rbac\domain\Domain $rbac
+ * @property-read \yii2bundle\rbac\domain\Domain $rbac
  * @property-read \yii2lab\rest\domain\Domain $rest
  *
  * @property-read \yii2module\account\domain\v3\Domain $account
  * @property-read \yii2bundle\article\domain\Domain $article
  * @property-read \yii2module\encrypt\domain\Domain $encrypt
  * @property-read \yii2tool\guide\domain\Domain $guide
- * @property-read \yii2module\lang\domain\Domain $lang
+ * @property-read \yii2bundle\lang\domain\Domain $lang
  * @property-read \yii2bundle\i18n\domain\Domain $i18n
  * @property-read \yii2bundle\model\domain\Domain $model
  * @property-read \yii2module\profile\domain\v2\Domain $profile

@@ -14,7 +14,7 @@ return [
 		// ...
 		'lang' => [
             'class' => 'yii2rails\domain\Domain',
-            'path' => 'yii2module\lang\domain',
+            'path' => 'yii2bundle\lang\domain',
             'repositories' => [
                 'language' => Driver::DISC,
                 'store' => APP == API ? Driver::HEADER : Driver::COOKIE,
