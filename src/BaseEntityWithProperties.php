@@ -76,7 +76,7 @@ class BaseEntityWithProperties extends BaseEntity
                 };
             }
         }
-        unset($fields[$this->getPropertyField()]);
+//        unset($fields[$this->getPropertyField()]);
 
         return $fields;
     }
