@@ -7,7 +7,6 @@ use yii\base\InvalidConfigException;
 use yii\base\UnknownPropertyException;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\BaseEntity;
-use yii2rails\domain\entities\ServiceExecutorEntity;
 use yii2rails\domain\interfaces\services\ReadOneInterface;
 use yii2rails\domain\services\base\BaseService;
 use yii2mod\helpers\ArrayHelper;
@@ -35,12 +34,6 @@ class ServiceHelper {
 			throw new InvalidArgumentException('Service "' . $domain . '->' . $service . '" not defined!');
 		}
 		return \App::$domain->{$domain}->{$service};
-	}
-	
-	public static function run(ServiceExecutorEntity $entity) {
-		$service = self::one($entity->domain, $entity->service);
-		$response = call_user_func_array([$service, $entity->method], $entity->params);
-		return $response;
 	}
 	
 	public static function has($serviceName) {
