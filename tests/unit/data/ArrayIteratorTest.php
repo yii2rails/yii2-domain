@@ -1,10 +1,10 @@
 <?php
 namespace tests\unit\data;
 
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 use yii2rails\extension\arrayTools\helpers\ArrayIterator;
 use yii2rails\domain\data\Query;
-use yii2lab\test\helpers\DataHelper;
+use yii2tool\test\helpers\DataHelper;
 
 class ArrayIteratorTest extends Unit
 {

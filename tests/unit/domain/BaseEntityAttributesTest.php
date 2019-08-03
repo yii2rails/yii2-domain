@@ -4,7 +4,7 @@ namespace tests\unit\domain;
 
 use tests\_source\entities\CityEntity;
 use yii\base\InvalidCallException;
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 
 class BaseEntityAttributesTest extends Unit {
 	

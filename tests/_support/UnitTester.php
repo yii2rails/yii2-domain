@@ -15,7 +15,7 @@
  *
  * @SuppressWarnings(PHPMD)
 */
-class UnitTester extends \yii2lab\test\base\_support\UnitTester
+class UnitTester extends \yii2tool\test\base\_support\UnitTester
 {
     use _generated\UnitTesterActions;
 

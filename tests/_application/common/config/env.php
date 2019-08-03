@@ -1,5 +1,5 @@
 <?php
 
-use yii2lab\test\helpers\TestHelper;
+use yii2tool\test\helpers\TestHelper;
 
 return TestHelper::loadEnvFromPath(__DIR__);

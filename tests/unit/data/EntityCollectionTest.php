@@ -6,7 +6,7 @@ use tests\_source\entities\CityEntity;
 use tests\_source\entities\StreetEntity;
 use yii\base\InvalidArgumentException;
 use yii2rails\domain\data\EntityCollection;
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 use yii\base\ErrorException;
 use yii2rails\extension\arrayTools\helpers\Collection;
 

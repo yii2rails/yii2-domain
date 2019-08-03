@@ -1,6 +1,6 @@
 <?php
 
-use yii2lab\test\helpers\TestHelper;
+use yii2tool\test\helpers\TestHelper;
 
 $name = 'console';
 $path = '../../../..';

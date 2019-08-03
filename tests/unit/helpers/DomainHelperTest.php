@@ -2,7 +2,7 @@
 
 namespace tests\unit\helpers;
 
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 use yii\base\Model;
 use yii2rails\domain\helpers\DomainHelper;
 use yii2bundle\account\domain\v3\entities\LoginEntity;

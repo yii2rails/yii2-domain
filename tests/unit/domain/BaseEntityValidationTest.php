@@ -8,7 +8,7 @@ use yii2rails\extension\arrayTools\helpers\Collection;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use tests\_source\entities\CountryEntity;
 use tests\_source\entities\CurrencyEntity;
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 
 class BaseEntityValidationTest extends Unit {
 	

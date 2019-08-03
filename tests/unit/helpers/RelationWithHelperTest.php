@@ -1,7 +1,7 @@
 <?php
 namespace tests\unit\helpers;
 
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 use yii2rails\domain\helpers\repository\RelationWithHelper;
 
 class RelationWithHelperTest extends Unit

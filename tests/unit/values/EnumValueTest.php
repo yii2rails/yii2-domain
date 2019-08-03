@@ -1,7 +1,7 @@
 <?php
 namespace tests\unit\values;
 
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 use tests\_source\values\ModeEnumValue;
 use yii\base\InvalidArgumentException;
 
