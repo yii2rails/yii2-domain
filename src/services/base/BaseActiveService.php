@@ -94,13 +94,13 @@ class BaseActiveService extends BaseService implements CrudInterface {
      */
     public function oneById($id, Query $query = null) {
         if(empty($id)) {
-            throw new InvalidArgumentException('ID can not be empty in ' . _METHOD_ . ' ' . static::class);
+            throw new InvalidArgumentException('ID can not be empty in ' . __METHOD__ . ' ' . static::class);
         }
         $beforeEvent = $this->beforeAction(self::EVENT_VIEW, ['id' => $id, 'query' => $query]);
         $query = $this->prepareQuery($query, ActiveMethodEnum::READ_ONE);
         $result = $this->repository->oneById($id, $query);
         if(empty($result)) {
-            throw new NotFoundHttpException(_METHOD_ . ':' . _LINE_);
+            throw new NotFoundHttpException(__METHOD__ . ':' . __LINE__);
         }
         $result = $this->afterReadTrigger($result, $query);
         return $this->afterAction(self::EVENT_VIEW, $result, ['id' => $id, 'query' => $query]);
