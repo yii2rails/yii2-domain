@@ -84,7 +84,9 @@ class BaseEntity extends Component implements Arrayable {
 		if(!empty($config)) {
 			if($config instanceof BaseEntity) {
 				$config = $config->toArray();
-			}
+			} elseif(!is_array($config)) {
+                $config = (array) $config;
+            }
 			$this->setAttributes($config);
 		}
 		$this->init();
