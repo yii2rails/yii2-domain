@@ -86,7 +86,7 @@ class BaseEntityWithProperties extends BaseEntity
      */
     public function toArray(array $fields = [], array $expand = [], $recursive = true, $isRaw = false): array
     {
-        $result = parent::toArray();
+        $result = parent::toArray($fields, $expand, $recursive, $isRaw);
 
         return $result;
     }
