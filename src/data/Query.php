@@ -474,7 +474,7 @@ class Query extends Component implements Arrayable {
      */
     public function cleanStringValue($value, $lower = false)
     {
-        $value =  preg_replace('/[^ a-zа-яё«»\'"-#№@,._:!\+\d]/ui', '',$value );
+        $value =  preg_replace('/[^ a-zа-яё«»\'"\-#№@,._:!\+\d]/ui', '',$value );
         if ($lower){
             $value = mb_strtolower($value);
         }
